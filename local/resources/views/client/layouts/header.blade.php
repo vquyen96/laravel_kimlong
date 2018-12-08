@@ -16,6 +16,8 @@
                         <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                         <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
                         <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                        <li><a href="{{ asset('/') }}" onclick="set_lang('vn')">vi</a></li>
+                        <li><a href="{{ asset('/') }}" onclick="set_lang('en')">ch</a></li>
                     </ul>
                 </div>
             </div>
@@ -28,19 +30,19 @@
     <div class="main-header-nav scrollingto-fixed">
         <div class="container">
             <nav id="menuzord" class="menuzord">
-                <a href="#" class="menuzord-brand"><img src="images/home/logokimlong.png" alt=""></a>
+                <a href="{{ asset('/') }}" class="menuzord-brand"><img src="images/home/logokimlong.png" alt=""></a>
                 <ul class="menuzord-menu">
                     {{--<li class="active"><a href="{{ asset('/') }}">Home</a></li>--}}
                     @foreach( $groups as $group)
-                        <li class="active"><a href="index.html">{{ $group->title }}</a>
+                        <li class="active"><a href="{{ $group->link == null ? asset('group/'.$group->slug.'--n-'.$group->id) : $group->link }}" {{ $group->link == null ? '' : 'target="_blank"' }} >{{ $group->title }}</a>
                             @if(count($group->group_childs))
                                 <ul class="dropdown">
                                     @foreach( $group->group_childs as $group_child )
-                                        <li><a href="index.html">{{ $group_child->title }}</a>
+                                        <li><a href="{{ $group_child->link == null ? asset('group/'.$group_child->slug.'--n-'.$group_child->id) : $group_child->link }}"  {{ $group_child->link == null ? '' : 'target="_blank"' }}>{{ $group_child->title }}</a>
                                             @if(count($group_child->group_childs))
                                                 <ul class="dropdown">
                                                     @foreach( $group_child->group_childs as $group_child2)
-                                                        <li><a href="blog-left-sidebar.html">{{ $group_child2->title }}</a></li>
+                                                        <li><a href="{{ $group_child2->link == null ? asset('group/'.$group_child2->slug.'--n-'.$group_child2->id) : $group_child2->link }}"  {{ $group_child2->link == null ? '' : 'target="_blank"' }}>{{ $group_child2->title }}</a></li>
                                                     @endforeach
                                                 </ul>
                                             @endif
@@ -50,7 +52,7 @@
                             @endif
                         </li>
                     @endforeach
-                    <li class="active"><a href="{{ asset('contact') }}">Liên hệ</a></li>
+                    <li class="active"><a href="{{ asset('contact') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ' : '联系我们' }}</a></li>
                 </ul>
             </nav>
         </div>

@@ -19,15 +19,16 @@ use \Illuminate\Support\Facades\Route;
 //,'middleware' => 'Start'
 Route::group(['namespace' => 'Client'],function (){
     Route::get('/','IndexController@index')->name('home');
-    Route::get('detail/{newsid}','IndexController@detail')->name('detail');
+    Route::get('detail/{slug}','IndexController@detail')->name('detail');
+    Route::get('group/{slug}','IndexController@group')->name('group');
     Route::group(['prefix'=>'article'],function(){
         Route::get('/{slug}','ArticelController@get_detail')->name('get_detail_articel');
         Route::post('action_comment','ArticelController@action_comment')->name('action_comment');
     });
 
-    Route::group(['prefix' => 'group'],function(){
-        Route::get('/{slug}','GroupController@get_articel_by_group')->name('get_articel_by_group');
-    });
+//    Route::group(['prefix' => 'group'],function(){
+//        Route::get('/{slug}','GroupController@get_articel_by_group')->name('get_articel_by_group');
+//    });
     Route::get('/open_video/{id}','VideosController@open_video')->name('open_video');
 
     Route::post('ad_view', 'IndexController@ad_view');

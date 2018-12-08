@@ -64,8 +64,10 @@
 				</div>
 				<div class="col-md-6 text-right">
 					<ul class="list-inline">
-						<li class="et-lione">Home  /</li>
-						<li class="et-litwo">Detail</li>
+						<li class="et-lione"><a href="{{ asset('/') }}">Trang chủ </a></li>
+						@foreach($breadcrumb as $item)
+						 / <li class="et-litwo"><a href="{{ asset('group/'.$item->slug.'--n-'.$item->id) }}">{{ $item->title }}</a></li>
+						@endforeach
 					</ul>
 				</div>
 			</div>
@@ -102,7 +104,7 @@
 						<h3 class="et-popular-categori-ttl text-uppercase"><i class="pe-7s-paper-plane"></i> CATEGORIES</h3>
 						<ul class="list-unstyled">
 							@foreach( $gr_childs as $gr)
-							<li><p><a href="">{{ $gr->title }}</a></p></li>
+							<li><p><a href="{{ asset('group/'.$gr->slug.'--n-'.$gr->id) }}">{{ $gr->title }}</a></p></li>
 							@endforeach
 							{{--<li><p>Curabitur id turpis at nulla elementum egestas</p></li>--}}
 							{{--<li><p>Nam ac nulla nec eros consectetur eleifend </p></li>--}}
@@ -111,46 +113,48 @@
 						</ul>
 					</div>
 					<div class="et-blog-smlastest-post et-inner-box">
-						<h3 class="et-blog-smttl text-uppercase"><i class="pe-7s-tools"></i> latest <span class="text-thm">post</span></h3>
+						<h3 class="et-blog-smttl text-uppercase titleCustom"><i class="pe-7s-tools"></i> latest post</h3>
+						@foreach($latestpost as $news)
 						<div class="media">
 							<div class="media-left pull-left">
 								<a href="#">
-									<img class="media-object" src="images/home/la_ban_29857438.jpg" alt="newss1.jpg">
+									<img class="media-object" src="{{ asset('local/storage/app/article/resized200-'.$news->fimage) }}" alt="{{ $news->title }}.jpg">
 								</a>
 							</div>
 							<div class="media-body">
-								<h5 class="media-heading">Nulla maximus, nisl a vehicula eleifend, nisi urna auctor est, a varius.</h5>
+								<h5 class="media-heading">{{ $news->title }}</h5>
 								<h6 class="et-bsmp-ttl">May 20, 2016</h6>
-								<a class="et-bsmpa" href="#">Read More</a>
+								<a class="et-bsmpa" href="{{ asset('detail/'.$news->slug.'--n-'.$news->id) }}">Read More</a>
 							</div>
 						</div>
-						<div class="media">
-							<div class="media-left pull-left">
-								<a href="#">
-									<img class="media-object" src="images/home/dong_von_ty_tq.jpg" alt="newss2.jpg">
-								</a>
-							</div>
-							<div class="media-body">
-								<h5 class="media-heading">Nulla maximus, nisl a vehicula eleifend, nisi urna auctor est, a varius.</h5>
-								<h6 class="et-bsmp-ttl">May 20, 2016</h6>
-								<a class="et-bsmpa" href="#">Read More</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="media-left pull-left">
-								<a href="#">
-									<img class="media-object" src="images/home/hang_giam_gia_251124738.jpg" alt="newss1.jpg">
-								</a>
-							</div>
-							<div class="media-body">
-								<h5 class="media-heading">Nulla maximus, nisl a vehicula eleifend, nisi urna auctor est, a varius.</h5>
-								<h6 class="et-bsmp-ttl">May 20, 2016</h6>
-								<a class="et-bsmpa" href="#">Read More</a>
-							</div>
-						</div>
+						@endforeach
+						{{--<div class="media">--}}
+							{{--<div class="media-left pull-left">--}}
+								{{--<a href="#">--}}
+									{{--<img class="media-object" src="images/home/dong_von_ty_tq.jpg" alt="newss2.jpg">--}}
+								{{--</a>--}}
+							{{--</div>--}}
+							{{--<div class="media-body">--}}
+								{{--<h5 class="media-heading">Nulla maximus, nisl a vehicula eleifend, nisi urna auctor est, a varius.</h5>--}}
+								{{--<h6 class="et-bsmp-ttl">May 20, 2016</h6>--}}
+								{{--<a class="et-bsmpa" href="#">Read More</a>--}}
+							{{--</div>--}}
+						{{--</div>--}}
+						{{--<div class="media">--}}
+							{{--<div class="media-left pull-left">--}}
+								{{--<a href="#">--}}
+									{{--<img class="media-object" src="images/home/hang_giam_gia_251124738.jpg" alt="newss1.jpg">--}}
+								{{--</a>--}}
+							{{--</div>--}}
+							{{--<div class="media-body">--}}
+								{{--<h5 class="media-heading">Nulla maximus, nisl a vehicula eleifend, nisi urna auctor est, a varius.</h5>--}}
+								{{--<h6 class="et-bsmp-ttl">May 20, 2016</h6>--}}
+								{{--<a class="et-bsmpa" href="#">Read More</a>--}}
+							{{--</div>--}}
+						{{--</div>--}}
 					</div>
 					<div class="et-quote et-inner-box">
-					<h3 class="et-quot-ttl text-uppercase"><i class="pe-7s-comment"></i> Quote of  <span class="text-thm">the Day</span></h3>
+					<h3 class="et-quot-ttl text-uppercase titleCustom"><i class="pe-7s-comment"></i> Quote of the Day</h3>
 					<p>In porttitor eleifend libero, vitae lobortis diam. Morbi feugiat nisl nisi, ut vehicula nulla venenatis vel. Etiam in sagittis tellus. Phasellus malesuada volutpat porttitor. Aliquam vitae magna pellentesque ex pretium posuere nec id nulla. Phasellus consequat .</p>
 					</div>
 					<div class="et-popular-tags et-inner-box">

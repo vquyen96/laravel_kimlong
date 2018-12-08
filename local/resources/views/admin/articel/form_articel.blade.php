@@ -87,24 +87,24 @@
 
                                     <div class="row form-group">
                                         <label class="col-sm-2">Danh mục tin <span class="text-danger">*</span></label>
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-10">
                                             <select class="form-control choose_relate" data-placeholder="Chọn danh mục cha" name="articel[groupid]" id="group" required
                                                     style="width: 100%;">
-                                                <option value="" disabled {{ Request::segment(4) == '0' ? 'selected' : '' }}>Chọn danh mục cha</option>
+                                                <option value="" disabled {{ Request::segment(4) == '0' ? 'selected' : '' }}>Chọn danh mục</option>
                                                 @foreach($list_group as $group)
                                                     <option {{$articel->groupid == $group->id ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-sm-5">
-                                            <select class="form-control choose_relate" data-placeholder="Danh mục con" name="articel[groupid_child]" id="group_child"
-                                                    style="width: 100%;">
-                                                <option value="" disabled {{ Request::segment(4) == '0' || !isset($articel->groupid_child)  ? 'selected' : '' }}>Chọn danh mục con</option>
-                                                @foreach($list_group_child as $group)
-                                                    <option {{isset($articel->groupid_child) && $articel->groupid_child == $group->id ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                        {{--<div class="col-sm-5">--}}
+                                            {{--<select class="form-control choose_relate" data-placeholder="Danh mục con" name="articel[groupid_child]" id="group_child"--}}
+                                                    {{--style="width: 100%;">--}}
+                                                {{--<option value="" disabled {{ Request::segment(4) == '0' || !isset($articel->groupid_child)  ? 'selected' : '' }}>Chọn danh mục con</option>--}}
+                                                {{--@foreach($list_group_child as $group)--}}
+                                                    {{--<option {{isset($articel->groupid_child) && $articel->groupid_child == $group->id ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>--}}
+                                                {{--@endforeach--}}
+                                            {{--</select>--}}
+                                        {{--</div>--}}
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-sm-2">Tóm tắt</label>

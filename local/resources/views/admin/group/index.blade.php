@@ -80,6 +80,8 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
+
+                                    <th>#</th>
                                     <th>Tên danh mục</th>
                                     <th class="hideResponsive768">Mô tả danh mục</th>
                                     <th class="hideResponsive768">Đường dẫn</th>
@@ -92,6 +94,7 @@
                                     {{-- {{ dd($list_group) }} --}}
                                 @foreach($list_group as $group)
                                     <tr>
+                                        <td>{{$group->id}}</td>
                                         <td>{{$group->title}}</td>
                                         <td class="hideResponsive768">{{$group->summary}}</td>
                                         <td class="hideResponsive768">{{$group->slug}}</td>

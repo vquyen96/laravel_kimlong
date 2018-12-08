@@ -104,11 +104,11 @@
                                 <div class="card-body box-profile">
                                     <div class="form-group">
                                         <label class="bold">Tiêu đề 1</label>
-                                        <input required="" type="text" class="form-control"  placeholder="Tiêu đề dòng 1" name="text1" value="{{$banner->text1}}">
+                                        <input required="" type="text" class="form-control"  placeholder="Tiêu đề dòng 1" name="text1" value="">
                                     </div>
                                     <div class="form-group">
                                         <label class="bold">Tiêu đề 2</label>
-                                        <input type="text" class="form-control"  placeholder="Tiêu đề dòng 2" name="text2" value="{{$banner->text2}}">
+                                        <input type="text" class="form-control"  placeholder="Tiêu đề dòng 2" name="text2" value="">
                                     </div>
 
                                     <div class="form-group">
@@ -122,7 +122,7 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Save</button>
-                                        <a href="{{ asset('admin/banner/delete/'.$banner->banner_id) }}" class="btn btn-danger white">Xóa</a>
+                                        {{--<a href="{{ asset('admin/banner/delete/'.$banner->banner_id) }}" class="btn btn-danger white">Xóa</a>--}}
                                     </div>
 
                                 </div>

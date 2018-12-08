@@ -1484,16 +1484,15 @@ section {
     width: 100%;
     z-index: 0;
   }
-  .et-lione {
+  .et-lione a {
     color: #fff;
     
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.5px;
   }
-  .et-litwo {
+  .et-litwo a {
     color: #1e1e1e;
-    
     letter-spacing: 0.5px;
     font-size: 14px;
     font-weight: 600;
@@ -2577,4 +2576,13 @@ section {
 
 .text-kl {
   color: #a95b5b !important;
+}
+
+.errorAlert{
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 9999;
+  transition: 2s;
 }

@@ -512,19 +512,31 @@
     });
 
     function titleCustom(){
-        let title =  $('.titleCustom').text();
-        let arr = title.split(" ");
-        let title_new = "";
-        for (let i = 0; i < arr.length ; i++){
-            if (i == arr.length-1){
-                title_new += ' <span class="text-kl">'+arr[i]+'</span>';
+        var titleCustoms =  $('.titleCustom');
+        for (let j = 0; j < titleCustoms.length; j++){
+            let title =  titleCustoms.eq(j).text();
+            let arr = title.split(" ");
+            let title_new = "";
+            for (let i = 0; i < arr.length ; i++){
+                if (i == arr.length-1){
+                    title_new += ' <span class="text-kl">'+arr[i]+'</span>';
+                }
+                else{
+                    title_new += ' '+arr[i];
+                }
             }
-            else{
-                title_new += ' '+arr[i];
-            }
+            titleCustoms.eq(j).html(title_new);
         }
-        $('.titleCustom').html(title_new);
+
     }
+    setTimeout(function(){
+        $('.errorAlert').css('top', '-200px');
+    }, 3000);
+    setTimeout(function(){
+        $('.errorAlert').fadeOut();
+    }, 3900);
+
+
 
 
 })(window.jQuery);

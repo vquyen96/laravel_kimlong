@@ -35,7 +35,10 @@
 </head>
 <body>
 <div class="wrapper">
-
+    <div class="currentUrl" style="display: none;">{{ asset('') }}</div>
+    <div class="errorAlert">
+        @include('errors.note')
+    </div>
     @include('client.layouts.header')
     @yield('main')
     @include('client.layouts.footer')
@@ -75,6 +78,19 @@
 
 <!-- END REVOLUTION SLIDER -->
 <script type="text/javascript">
+    var url = $('.currentUrl').text();
+
+    function set_lang(lang) {
+        $.ajax({
+            url: url+'/set_lang/' + lang,
+            method: 'get',
+            dataType: 'json',
+        }).fail(function (ui, status) {
+        }).done(function (data, status) {
+            if (data.status == 1) window.location= url;
+        })
+    }
+
     var tpj=jQuery;
     var revapi4;
     tpj(document).ready(function() {

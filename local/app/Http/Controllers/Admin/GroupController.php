@@ -93,6 +93,7 @@ class GroupController extends Controller
                 'title' => 'root'
             ];
             $result[] = (object)$root;
+//            dd($list_group);
             $this->recusiveGroup($list_group,0,"",$result);
 
             if($id == 0){
@@ -135,6 +136,12 @@ class GroupController extends Controller
         $data['updated_at'] = time();
         if(!isset($data['home_index'])){
             $data['home_index'] = 0;
+        }
+        if (!isset($data['single'])){
+            $data['single'] = 1;
+        }
+        else{
+            $data['single'] = 0;
         }
 
         if($id == 0){

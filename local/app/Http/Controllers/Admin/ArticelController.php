@@ -659,25 +659,14 @@ class ArticelController extends Controller
         $article_relate = [];
         $list_article_relate = DB::table($this->db->news)->where('status', 1)->where('release_time', '<=', time())->orderByDesc('id')->take(5)->get();
         if($id == 0){
-            if(in_array(0, $group_ids)){
-                $list_group = DB::table($this->db->group)->where('status', 1)->orderBy('order', 'asc')->get()->toArray();
-            }else {
-                $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
-                    $query->whereIn('id',$group_ids)
-                          ->orWhereIn('parentid',$group_ids);
-                })->orderBy('order', 'asc')->get()->toArray();
-            }
+            $list_group = DB::table($this->db->group)->where('status', 1)->orderBy('order', 'asc')->get()->toArray();
+            $root = [
+                'id' => 0,
+                'title' => 'root'
+            ];
+            $result[] = (object)$root;
+            $this->recusiveGroup($list_group, 0, "", $result);
 
-            if (count($list_group)){
-                 // $this->recusiveGroup($list_group,0,"",$result);
-                foreach ($list_group as $group) {
-                    if ($group->parentid == 0) {
-                        $result[] = $group;
-                    }
-                }
-                
-            }
-            else $result = [];
             $data = [
                 'id' => 0,
                 'title' => '',
@@ -718,28 +707,14 @@ class ArticelController extends Controller
             $article_group_ids = explode(',',$article_user->group_id);
             // dd($article_group_ids );
 
-            $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
-//            if(in_array(0, $article_group_ids)){
-//
-//            }else{
-//                $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($article_group_ids){
-//                    $query->whereIn('id',$article_group_ids)
-//                          ->orWhereIn('parentid',$article_group_ids);
-//                })->get()->toArray();
-//            }
+            $list_group = DB::table($this->db->group)->where('status', 1)->orderBy('order', 'asc')->get()->toArray();
+            $root = [
+                'id' => 0,
+                'title' => 'root'
+            ];
+            $result[] = (object)$root;
+            $this->recusiveGroup($list_group, 0, "", $result);
 
-            
-            // $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
-            if (count($list_group)){
-                 // $this->recusiveGroup($list_group,0,"",$result);
-                foreach ($list_group as $group) {
-                    if ($group->parentid == 0) {
-                        $result[] = $group;
-                    }
-                }
-            }
-            else $result = [];
-            
             // dd($article);
             if ($article_model->time_hot_item - time() <= 0) {
                 $article_model->hot_item =  0;
@@ -766,27 +741,26 @@ class ArticelController extends Controller
             if($user->level == 4 && $article->status == 1){
                 return redirect('admin');
             }
-            $groupids = explode(',',$article->groupid);
-            // dd($groupids);
-            $groupid = $groupids[0];
+//            $groupids = explode(',',$article->groupid);
+//            // dd($groupids);
+//            $groupid = $groupids[0];
+//
+//            unset($article->groupid);
 
-            unset($article->groupid);
-            
-            
-            
-            $group = DB::table($this->db->group)->where('status', 1)->where('id', $groupid)->first();
-            if ($group->parentid == 0 ) {
-                $article->groupid = $group->id;
-                $list_group_child = DB::table($this->db->group)->where('status', 1)->where('parentid', $group->id)->get();
-
-            }
-            else{
-                $article->groupid = DB::table($this->db->group)->where('status', 1)->where('id', $group->parentid)->first()->id;
-                $article->groupid_child = $group->id;
-                $list_group_child = DB::table($this->db->group)->where('status', 1)->where('parentid', $article->groupid)->get();
-
-
-            }
+//            $group = DB::table($this->db->group)->where('status', 1)->where('id', $groupid)->first();
+//
+//            if ($group != null && $group->parentid == 0 ) {
+//                $article->groupid = $group->id;
+//                $list_group_child = DB::table($this->db->group)->where('status', 1)->where('parentid', $group->id)->get();
+//
+//            }
+//            else{
+//                $article->groupid = DB::table($this->db->group)->where('status', 1)->where('id', $group->parentid)->first()->id;
+//                $article->groupid_child = $group->id;
+//                $list_group_child = DB::table($this->db->group)->where('status', 1)->where('parentid', $article->groupid)->get();
+//
+//
+//            }
             // foreach ($groupids as $groupid) {
             //     $group = DB::table($this->db->group)->where('status', 1)->where('id', $groupid)->first();
                 
@@ -899,15 +873,15 @@ class ArticelController extends Controller
         // if (isset($data['relate']) && $data['relate'] != null) {
         //    $data['relate'] = join(',',$data['relate']);
         // }
-        if (isset($data['groupid_child'])) {
-            $data['groupid'] = $data['groupid_child'];
-            $groupid_child = $data['groupid_child'];
-            unset($data['groupid_child']);
-        }
-        else{
-            $data['groupid'] = $data['groupid'];
-            $groupid_child = $data['groupid'];
-        }
+//        if (isset($data['groupid_child'])) {
+//            $data['groupid'] = $data['groupid_child'];
+//            $groupid_child = $data['groupid_child'];
+//            unset($data['groupid_child']);
+//        }
+//        else{
+//            $data['groupid'] = $data['groupid'];
+//            $groupid_child = $data['groupid'];
+//        }
         
 
         

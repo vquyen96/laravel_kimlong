@@ -92,16 +92,21 @@ class IndexController extends Controller
         $groups = $this->getGroupClient();
 //        dd($groups);
         // Get banner
+        Session::get('lang','vn') == 'vn' ? $home_id = 1574 : $home_id = 1405 ;
+
         $banners = Banner::where('group_id', 1574)->get();
 
         //Get Content
-        $content = News::where('groupid', 1574)->inRandomOrder()->first();
+        Session::get('lang','vn') == 'vn' ? $services_id = 1557 : $services_id = 1407 ;
+        $content = News::where('groupid', $home_id)->inRandomOrder()->first();
         // Get list services
-        $gr_services_id =  DB::table($this->db->group)->where('parentid', '1557')->where('status', 1)->get(['id'])->toArray();
+        $gr_services_id =  DB::table($this->db->group)->where('parentid', $services_id)->where('status', 1)->get(['id'])->toArray();
         $gr_services_id = array_column(json_decode(json_encode($gr_services_id),true),'id');
         $services = DB::table($this->db->news)->whereIn('groupid', $gr_services_id)->take(3)->get();
         //get list news
-        $gr_news_id =  DB::table($this->db->group)->where('parentid', '1569')->where('status', 1)->get(['id'])->toArray();
+        Session::get('lang','vn') == 'vn' ? $news_id = 1569 : $news_id = 1409 ;
+
+        $gr_news_id =  DB::table($this->db->group)->where('parentid', $news_id)->where('status', 1)->get(['id'])->toArray();
         $gr_news_id = array_column(json_decode(json_encode($gr_news_id),true),'id');
         $news = DB::table($this->db->news)->whereIn('groupid', $gr_news_id)->take(3)->get();
 
@@ -117,27 +122,74 @@ class IndexController extends Controller
         return view('client.index', $data);
     }
 
-    public function detail($newsid){
-        $new = News::find($newsid);
+    public function detail($slug){
+        $slug = explode('--n-',$slug);
+//        dd($slug);
+        $data = $this->getDetailById($slug[1]);
+        return view('client.detail', $data);
+    }
+
+    public function getDetailById($id){
+        $new = News::find($id);
         $group = Groupvn::find($new->groupid);
         $gr_childs = Groupvn::where('parentid', $new->groupid)->get();
         count($gr_childs) == 0 ?  $gr_childs = Groupvn::where('parentid', $group->parentid )->get() : '' ;
 
         $banner = Banner::where('group_id', $new->groupid)->inRandomOrder()->first();
+        Session::get('lang','vn') == 'vn' ? $home_id = 1574 : $home_id = 1405 ;
         if ($banner == null){
             $banner =  Banner::where('group_id', 1574)->inRandomOrder()->first();
         }
-        $content = DB::table($this->db->logfile)->where('LogId',$newsid)->whereNotNull('noidung')->where('noidung','!=','')
+        $content = DB::table($this->db->logfile)->where('LogId',$id)->whereNotNull('noidung')->where('noidung','!=','')
             ->orderByDesc
             ('id')->first();
-
+        Session::get('lang','vn') == 'vn' ? $news_id = 1569 : $news_id = 1409 ;
+        $group_news = Groupvn::where('parentid', $news_id)->get(['id'])->toArray();
+        $group_news = array_column(json_decode(json_encode($group_news),true),'id');
+        $latestpost = DB::table($this->db->news)->whereIn('groupid', $group_news)->take(3)->get();
+        $breadcrumb = $this->getBreadcrumb($group, $breadcrumb = []);
         $data = [
             "news" => $new,
             "content" => $content,
             "banner" => $banner,
             "gr_childs" => $gr_childs,
+            "group" => $group,
+            "latestpost" => $latestpost,
+            "breadcrumb" => array_reverse($breadcrumb)
+
+
         ];
-        return view('client.detail', $data);
+        return $data;
+    }
+
+    function getBreadcrumb(Groupvn $group, $breadcrumb){
+        $breadcrumb[] = $group;
+        if ($group->parentid != 0){
+            $group_pr = Groupvn::find($group->parentid);
+            $breadcrumb = $this->getBreadcrumb($group_pr, $breadcrumb);
+        }
+        return $breadcrumb;
+    }
+    public function group($slug){
+        $slug = explode('--n-',$slug);
+        $group = Groupvn::find($slug[1]);
+        if ($group == null){
+            return redirect('/')->with('error', 'Không tìm thấy trang');
+        }
+//        if ($group->slug != $slug[0]){
+//            return redirect('/')->with('error', 'Không tìm thấy trang');
+//        }
+        if ($group->single == 1){
+            $news = News::where('groupid', $slug[1])->inRandomOrder()->first();
+            if ($news == null){
+                return redirect('/')->with('error', 'Không tìm thấy trang');
+            }
+            $data = $this->getDetailById($news->id);
+            return view('client.detail', $data);
+        }
+        else{
+            dd('mutiple');
+        }
     }
 
 
