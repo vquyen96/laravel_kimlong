@@ -36,24 +36,6 @@ Route::group(['namespace' => 'Client'],function (){
 
     Route::get('about', 'ArticelController@getAbout');
 
-    Route::group(['prefix' => 'magazine'], function(){
-        Route::get('/', 'MagazineController@getHome');
-        Route::get('{slug}', 'MagazineController@getDetail');
-        Route::post('load_more', 'MagazineController@load_more');
-        Route::post('view', 'MagazineController@magazine_view');
-    });
-
-    Route::group(['prefix' => 'advert'], function(){
-        Route::get('/', 'AdvertController@getAdvert');
-        Route::get('contact', 'AdvertController@getContact');
-        Route::post('contact', 'AdvertController@postContact');
-        
-        Route::get('order', 'AdvertController@getOrder');
-        Route::post('order', 'AdvertController@postOrder');
-        Route::get('get_district/{id}','AdvertController@get_district')->name('get_district');
-        Route::get('get_wards/{id}','AdvertController@get_wards')->name('get_wards');
-
-    });
 
 
 });
@@ -138,17 +120,6 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('delete/{id}','BannerController@getDelete');
         });
 
-
-        Route::group(['prefix' => 'topic'], function(){
-            Route::get('/', 'TopicController@getList')->name('admin_topic');
-            Route::get('/sort', 'TopicController@getSort')->name('sort_hot_topic');
-            Route::post('/sort', 'TopicController@postSort')->name('sort_hot_topic_post');
-            Route::get('/form/{id}', 'TopicController@getForm')->name('form_topic');
-            Route::post('/form/{id}', 'TopicController@postForm')->name('form_topic_post');
-            
-            Route::get('/delete/{id}', 'TopicController@getDelete')->name('delete_topic');
-
-        });
         Route::group(['prefix' => 'profile'], function(){
             Route::get('/', 'ProfileController@getDetail');
             Route::post('/', 'ProfileController@postDetail');
@@ -167,76 +138,14 @@ Route::group(['namespace' => 'Admin'], function (){
 
             Route::post('status', 'VideoController@action_status');
         });
-        Route::group(['prefix' => 'group_video'], function(){
-            Route::get('/','GroupVideoController@index')->name('admin_video_group');
-            Route::get('/form_group_video/{id}','GroupVideoController@form_group_video')->name('form_group_video');
-            Route::post('/action_menu_video','GroupVideoController@action_menu_video')->name('action_menu_video');
-            Route::get('/delete_menu/{id}','GroupVideoController@delete_menu')->name('delete_menu');
-            Route::get('/form_sort','GroupVideoController@form_sort')->name('form_sort');
-            Route::post('/sort_menu','GroupVideoController@sort_menu')->name('sort_menu');
-
-            Route::post('on', 'GroupVideoController@getOn');
-            Route::post('off', 'GroupVideoController@getOff');
-
-        });
-
-        Route::group(['prefix' => 'magazine'], function(){
-            Route::get('/', 'MagazineNewController@getList');
-
-            Route::get('add','MagazineNewController@getAdd');
-            Route::post('add','MagazineNewController@postAdd');
-
-            Route::get('edit/{id}','MagazineNewController@getEdit');
-            Route::post('edit/{id}','MagazineNewController@postEdit');
-
-            Route::get('delete/{id}','MagazineNewController@getDelete');
-
-            Route::get('sort', 'MagazineNewController@getSort');
-            Route::post('sort', 'MagazineNewController@postSort');
-
-            Route::post('status', 'MagazineNewController@action_status');
-
-        });
-
-        Route::group(['prefix'=>'report'], function(){
-            Route::get('report_article', 'ReportController@report_article')->name('report_article');
-            Route::get('detail_report_article/{id}', 'ReportController@detail_report_article')->name('detail_report_article');
-        });
-
-        Route::group(['prefix' => 'advert'], function(){
-            Route::get('/', 'AdvertController@index');
-
-            Route::get('add','AdvertController@create');
-            Route::post('add','AdvertController@store');
-
-            Route::get('edit/{id}','AdvertController@edit');
-            Route::post('edit/{id}','AdvertController@update');
-
-            Route::get('delete/{id}','AdvertController@destroy');
-
-            Route::get('top', 'AdvertController@getTop');
-            Route::get('top/{id}/{lo_id}', 'AdvertController@getGroup');
-            Route::get('top_add/{id}/{lo_id}/{ad_id}', 'AdvertController@addTopAdvert');
-            Route::get('top_delete/{id}', 'AdvertController@deleteTopAdvert');
-
-            Route::post('on', 'AdvertController@getOn');
-            Route::post('off', 'AdvertController@getOff');
-        });
-
 
         Route::group(['prefix' => 'website_info'],function(){
             Route::get('/','WebsiteInfoController@index')->name('website_info');
             Route::post('/add_info','WebsiteInfoController@add_info')->name('add_info');
             Route::post('/update_info','WebsiteInfoController@update_info')->name('update_info');
+            Route::post('/update_info_raw','WebsiteInfoController@update_info_raw')->name('update_info_raw');
             Route::get('/delete_info/{id}','WebsiteInfoController@delete_info')->name('delete_info');
         });
-
-        Route::group(['prefix'=>'comment'],function(){
-            Route::get('/','CommentController@index')->name('admin_comment');
-            Route::get('/update_comment/{id}','CommentController@update_status')->name('update_comment');
-            Route::get('/delete_comment/{id}','CommentController@delete_comment')->name('delete_comment');
-        });
-
 
         Route::group(['middleware' => 'CheckSite'], function(){
             Route::group(['prefix' => 'account'], function(){
@@ -249,24 +158,6 @@ Route::group(['namespace' => 'Admin'], function (){
                 Route::post('edit/{id}','AccountController@postEdit');
 
                 Route::get('delete/{id}','AccountController@getDelete');
-
-            });
-
-            Route::group(['prefix' => 'emagazine'], function(){
-                Route::get('/', 'EmagazineController@getList');
-
-                Route::get('add','EmagazineController@getAdd');
-                Route::post('add','EmagazineController@postAdd');
-
-                Route::get('edit/{id}','EmagazineController@getEdit');
-                Route::post('edit/{id}','EmagazineController@postEdit');
-
-                Route::get('delete/{id}','EmagazineController@getDelete');
-
-                Route::get('sort', 'EmagazineController@getSort');
-                Route::post('sort', 'EmagazineController@postSort');
-
-                Route::post('status', 'EmagazineController@action_status');
 
             });
 
@@ -284,38 +175,16 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/group/form_sort_group/{id}',['as' => 'form_sort_group','uses' => 'GroupController@form_sort_group']);
             Route::get('/group/form_sort_group_category/{id}',['as' => 'form_sort_group_category','uses' => 'GroupController@form_sort_group_category']);
             Route::post('/group/update_order',['as' => 'update_order','uses' => 'GroupController@update_order']);
-
-            
-
-
-
-
-            // Route::group(['prefix' => 'magazine'], function(){
-            //     Route::get('/','MagazineController@index')->name('admin_magazine');
-            //     Route::get('/form_magazine/{id}','MagazineController@form_magazine')->name('form_magazine');
-            //     Route::post('/action_magazine','MagazineController@action_magazine')->name('action_magazine');
-            //     Route::get('/delete_magazine/{id}','MagazineController@delete_magazine')->name('delete_magazine');
-
-
-            // });
-
-
-
-
-
-            Route::group(['prefix'=>'contact'], function(){
-                Route::get('contact', 'ContactController@getAdvertContact');
-                Route::post('contact', 'ContactController@getDetailAdvertContact');
-
-                Route::get('order', 'ContactController@getAdvertOrder');
-                Route::post('order', 'ContactController@getDetailAdvertOrder');
-            });
-
-            // Route::get('about', 'ArticelController@getAbout');
         });
 
+        Route::group(['prefix' => 'image'], function() {
+            Route::get('/','ImageController@getList');
+            Route::post('add','ImageController@postAdd');
+//            Route::get('add','ImageController@getAdd');
+            Route::get('delete/{id}','ImageController@getDelete');
+        });
 
-	});
+    });
 });
 
 Route::post('/upload_image',['as' => 'upload_image','uses' => 'ClientController@upload_image']);

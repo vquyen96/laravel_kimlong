@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Login || Việt Nam Hội Nhập</title>
+  <title>Login Kim long</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="{{ asset('local/resources/assets/admin') }}/">
@@ -27,7 +27,7 @@
 <div class="login-box">
   <div class="login-logo">
     <a href="{{ asset('') }}">
-      <img src="../../uploads/images/LogoVnhn_vn.png" width="100%">
+      <img src="../images/home/logokimlong.png" width="100%">
     </a>
   </div>
   <!-- /.login-logo -->
@@ -51,14 +51,14 @@
         <div class="row">
           <div class="col-8">
             <div class="checkbox icheck">
-              <label>
-                <a href="{{ asset('login') }}">Quên mật khẩu</a>
-              </label>
+              {{--<label>--}}
+                {{--<a href="{{ asset('login') }}">Quên mật khẩu</a>--}}
+              {{--</label>--}}
             </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat" >Đăng nhập</button>
+            <button type="submit" class="btn btn-kimlong btn-block btn-flat" >Đăng nhập</button>
           </div>
           <!-- /.col -->
         </div>

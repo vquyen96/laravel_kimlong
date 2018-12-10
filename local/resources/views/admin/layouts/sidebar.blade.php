@@ -134,12 +134,6 @@
                                 <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : 'Article list'}}</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{route('sort_hot_articel')}}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết hot' : 'Sort articles'}}</p>
-                            </a>
-                        </li>
 
                         <li class="nav-item">
                             <a href="{{route('form_articel',0)}}" class="nav-link">
@@ -147,12 +141,12 @@
                                 <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Viết bài' : 'Add new'}}</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{route('draft_article')}}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài viết nháp' : 'Draft article'}}</p>
-                            </a>
-                        </li>
+                        {{--<li class="nav-item">--}}
+                            {{--<a href="{{route('draft_article')}}" class="nav-link">--}}
+                                {{--<i class="fa fa-circle-o nav-icon"></i>--}}
+                                {{--<p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài viết nháp' : 'Draft article'}}</p>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">

@@ -78,6 +78,27 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12" style="padding-left: 30px">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Thông tin</h3>
+                        </div>
+                        <form id="create_group" action="{{route('update_info_raw')}}" method="post">
+                            {{csrf_field()}}
+                            <div class="card-body">
+                                <div class="row form-group">
+                                    <div class="col-sm-12">
+                                        <textarea name="info" class="form-control" rows="20">{{$info_raw}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box-footer card-footer">
+                                <button type="submit" class="btn btn-info pull-right">Cập nhật
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
                     <div class="row">
                         <label>Người cập nhật : {{$website_info->user_updated ? $website_info->user_updated->fullname : 'admin'}}</label>
                     </div>

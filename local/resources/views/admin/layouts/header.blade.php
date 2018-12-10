@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="css/header.css">
-<nav class="main-header navbar navbar-expand navbar-light border-bottom bg-danger">
+<nav class="main-header navbar navbar-expand navbar-light border-bottom bg-kimlong">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -30,7 +30,7 @@
         <li class="nav-item d-none d-sm-inline-block">
             <select id="lang" class="form-control" onchange="change_lang()">
                 <option {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'selected' : ''}} value="vn">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tiếng Việt' : 'Vietnamese'}}</option>
-                <option {{\Illuminate\Support\Facades\Config::get('app.locale') == 'en' ? 'selected' : ''}} value="en">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tiếng Anh' : 'English'}}</option>
+                <option {{\Illuminate\Support\Facades\Config::get('app.locale') == 'en' ? 'selected' : ''}} value="en">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tiếng Trung' : 'Chinese'}}</option>
             </select>
         </li>
         <!-- Messages Dropdown Menu -->

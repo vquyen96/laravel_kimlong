@@ -89,6 +89,9 @@ h5 {
 h6 {
   font-size: 12px;
 }
+.d-none{
+  display: none;
+}
 .img-fluid {
   width: 100% !important;
 }
@@ -524,7 +527,9 @@ section {
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 45%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
   }
   .et-slash {
     margin-top: 30px;
@@ -584,13 +589,13 @@ section {
   .et-project-thumb:hover .et-project-overlay {
     transform: scale(1); 
   }
-  .et-srvc-ovrly-icon {
-    position: absolute;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    top: 45%;
-  }
+  /*.et-srvc-ovrly-icon {*/
+    /*position: absolute;*/
+    /*margin: 0 auto;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*top: 45%;*/
+  /*}*/
   .et-srvc-ovrly-icon span {
     color: #fafbfd;
     font-size: 18px;
@@ -860,6 +865,9 @@ section {
     padding-top: 80px;
   }
 /*=========== Footer ==========*/
+  .foter-logo img {
+    width: 69%;
+  }
   .et-footer {
     padding-bottom: 50px;
     padding-top: 80px;
@@ -875,8 +883,8 @@ section {
   }
   .et-foter-sub-title {
     color: #fff;
-    font-family: raleway;
-    font-size: 24px;
+    
+    font-size: 18px;
     font-weight: bold;
     letter-spacing: 0.5px;
     position: relative;
@@ -899,15 +907,21 @@ section {
   }
   .et-twitter-feed-widget li {
     margin-bottom: 20px;
-    padding-left: 25px;
+    color: #fff;
   }
-  .et-twitter-feed-widget li:before {
-    color: #1cbde9;
-    content: "";
-    font-family: fontawesome;
-    left: 0;
-    position: absolute;
+
+  .img-responsive.img-fluid:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
   }
+  /*.et-twitter-feed-widget li:before {*/
+    /*color: #1cbde9;*/
+    /*content: "";*/
+    /*font-family: fontawesome;*/
+    /*left: 0;*/
+    /*position: absolute;*/
+  /*}*/
   .et-twitter-feed-widget li a {
     color: #ffffff;
     font-family: 'Roboto', sans-serif;
@@ -956,6 +970,7 @@ section {
     -ms-transition: all 0.4s ease-in-out 0s;
     -o-transition: all 0.4s ease-in-out 0s;
     transition: all 0.4s ease-in-out 0s;
+    cursor: pointer;
   }
   .et-flickr-widget .et-thumb:hover .et-flckr-overlay {
     transform: scale(1);

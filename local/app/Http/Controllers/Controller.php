@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Image;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -37,6 +38,10 @@ class Controller extends BaseController
 //                View::share('level', $level);
 //            }
 //
+
+            $images = Image::where('status', 1)->take(8)->get();
+            View::share('images',$images);
+
             $groups = $this->getGroupClient();
             View::share('groups',$groups);
 

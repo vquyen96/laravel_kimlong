@@ -165,10 +165,10 @@
                                     <th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Hình ảnh' : 'Image'}}</th>
                                     
                                     <th class="titleTable">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tiêu đề bài viết' : 'Title'}}</th>
-                                    <th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Lượt xem' : 'View'}}</th>
+                                    {{--<th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Lượt xem' : 'View'}}</th>--}}
                                     <th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chuyên mục' : 'Category'}}</th>
                                     <th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Người tạo' : 'Creator'}}</th>
-                                    <th class="nowrap">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Người duyệt' : 'Approved by'}}</th>
+                                    {{--<th class="nowrap">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Người duyệt' : 'Approved by'}}</th>--}}
                                     @if(Request::segment(3) != 'approved_cgroup')
                                         <th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trạng thái' : 'Status'}}</th>
                                     @endif
@@ -223,7 +223,7 @@
                                         </td>
                                         <td>
                                             <div class="avatar">
-                                                <img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized200-'.$articel->fimage)) ? asset('local/storage/app/article/resized200-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : '../images/default-image.png')) : '../images/default-image.png' }}">
+                                                <img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized200-'.$articel->fimage)) ? asset('local/storage/app/article/resized200-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}">
                                             </div>
                                         </td>
                                         
@@ -233,9 +233,9 @@
                                                  {{$articel->title}}
                                             </a>
                                         </td>
-                                        <td>
-                                             {{ $articel->view == null ? 0 : $articel->view }}
-                                        </td>
+                                        {{--<td>--}}
+                                             {{--{{ $articel->view == null ? 0 : $articel->view }}--}}
+                                        {{--</td>--}}
                                         <td>
                                             <?php $count = 0?>
                                             @foreach($list_group as $articel_item)
@@ -253,16 +253,16 @@
                                             @endif
                                             
                                         </td>
-                                        <td>
-                                            @if(isset($articel->author))
-                                                <div class="">{{ $articel->author  }} </div>
-                                                <div class="timeTiny">{{ $articel->author_date  }} </div>
+                                        {{--<td>--}}
+                                            {{--@if(isset($articel->author))--}}
+                                                {{--<div class="">{{ $articel->author  }} </div>--}}
+                                                {{--<div class="timeTiny">{{ $articel->author_date  }} </div>--}}
 
-                                            @else
-                                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Không còn' : 'No more'}} 
-                                            @endif
-                                            
-                                        </td>
+                                            {{--@else--}}
+                                                {{--{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Không còn' : 'No more'}} --}}
+                                            {{--@endif--}}
+                                            {{----}}
+                                        {{--</td>--}}
                                         <td>
                                             @if(isset($articel->approved))
                                                 <div class="">{{ $articel->approved  }} </div>

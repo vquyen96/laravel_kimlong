@@ -2177,6 +2177,19 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
+.btn-kimlong {
+  color: #ffffff;
+  background-color: #8b0202;
+  border-color: #790100;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.btn-kimlong:hover {
+  color: #ffffff;
+  background-color: #790100;
+  border-color: #790100;
+}
+
 .btn-primary {
   color: #ffffff;
   background-color: #007bff;
@@ -5792,6 +5805,7 @@ button.label-warning:focus {
 .alert-error, .label-danger {
   background-color: #dc3545 !important;
 }
+.bg-kimlong {background-color: #a95b5b  !important;}
 
 a.bg-danger:hover, a.alert-danger:hover,
 a.alert-error:hover, a.label-danger:hover, a.bg-danger:focus, a.alert-danger:focus,

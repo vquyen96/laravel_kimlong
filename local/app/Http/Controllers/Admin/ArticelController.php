@@ -1060,14 +1060,14 @@ class ArticelController extends Controller
                     $data['approved_id'] = $user_login->id;
                     $data['approved_at'] = $data['updated_at'];
                 }
-                $send  = $data['send'];
+//                $send  = $data['send'];
                 // dd($request->get('sbm_save'));
                 
-                if ($data['send'] != null) {
-                    $data['status'] = $articel->status - 1;
-                }
-                // dd($send);
-                unset($data['send']);
+//                if ($data['send'] != null) {
+//                    $data['status'] = $articel->status - 1;
+//                }
+//                // dd($send);
+//                unset($data['send']);
 
                 if ($articel->status == 5) {
                     $data['status'] = $status;
@@ -1125,9 +1125,9 @@ class ArticelController extends Controller
                 if ($request->get('sbm_save') != null) {
                     if(!$this->add_log($articel, 4 ,'Chỉnh sửa ,'.'Lưu lại')) $check = 0;
                 }
-                else if ($send == '1') {
-                    if(!$this->add_log($articel,$status,'Gửi lại ,'.$status_str)) $check = 0;
-                }
+//                else if ($send == '1') {
+//                    if(!$this->add_log($articel,$status,'Gửi lại ,'.$status_str)) $check = 0;
+//                }
                 else{
                     if(!$this->add_log($articel,$status,'Chỉnh sửa,'.$status_str)) $check = 0;
                 }
@@ -1137,9 +1137,9 @@ class ArticelController extends Controller
                     if ($request->get('sbm_save') != null) {
                         return back()->with('success','Lưu bài thành công');
                     }
-                    if ($send == '1') {
-                        return redirect('admin/articel')->with('success','Gửi lại thành công');
-                    }
+//                    if ($send == '1') {
+//                        return redirect('admin/articel')->with('success','Gửi lại thành công');
+//                    }
                     else{
                         return back()->with('success','Cập nhật thành công');
                     }

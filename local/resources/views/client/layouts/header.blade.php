@@ -2,22 +2,22 @@
 <div class="et-header-topped">
     <div class="container">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-7">
                 <ul class="list-inline et-ht-cntct-details">
-                    <li><a href="#"><i class="lnr lnr-map-marker"></i> 45 Park Avenue, New York</a></li>
-                    <li><a href="#"><i class="lnr lnr-phone"></i> (+01) 123 456 7896</a></li>
+                    <li><a href="#"><i class="lnr lnr-map-marker"></i>{{ $web_info->location_head }}</a></li>
+                    <li><a href="#"><i class="lnr lnr-phone"></i>{{ $web_info->hotline }}</a></li>
                 </ul>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-5">
                 <div class="et-social-linked pull-right">
                     <ul class="list-inline">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                        <li><a href="{{ asset('/') }}" onclick="set_lang('vn')">vi</a></li>
-                        <li><a href="{{ asset('/') }}" onclick="set_lang('en')">ch</a></li>
+                        <li><a href="{{ $web_info->facebook }}"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="{{ $web_info->twitter }}"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="{{ $web_info->dribbble }}"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="{{ $web_info->pinterest }}"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="{{ $web_info->skype }}"><i class="fa fa-skype"></i></a></li>
+                        <li><a style="cursor: pointer" onclick="set_lang('vn')">vi</a></li>
+                        <li><a style="cursor: pointer" onclick="set_lang('en')">ch</a></li>
                     </ul>
                 </div>
             </div>

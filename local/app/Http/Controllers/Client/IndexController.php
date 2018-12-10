@@ -119,14 +119,14 @@ class IndexController extends Controller
             "content" => $content
 
         ];
-        return view('client.index', $data);
+        return view('client.page.index', $data);
     }
 
     public function detail($slug){
         $slug = explode('--n-',$slug);
 //        dd($slug);
         $data = $this->getDetailById($slug[1]);
-        return view('client.detail', $data);
+        return view('client.page.detail', $data);
     }
 
     public function getDetailById($id){
@@ -185,9 +185,29 @@ class IndexController extends Controller
                 return redirect('/')->with('error', 'Không tìm thấy trang');
             }
             $data = $this->getDetailById($news->id);
-            return view('client.detail', $data);
+            return view('client.page.detail', $data);
         }
         else{
+            $breadcrumb = $this->getBreadcrumb($group, $breadcrumb = []);
+            $gr_childs = Groupvn::where('parentid', $group->id)->get();
+            count($gr_childs) == 0 ?  $gr_childs = Groupvn::where('parentid', $group->parentid )->get() : '' ;
+            $banner = Banner::where('group_id', $group->id)->inRandomOrder()->first();
+            Session::get('lang','vn') == 'vn' ? $home_id = 1574 : $home_id = 1405 ;
+            if ($banner == null){
+                $banner =  Banner::where('group_id', 1574)->inRandomOrder()->first();
+            }
+            $group_news = Groupvn::where('parentid', $group->id)->orWhere('id', $group->id)->get(['id'])->toArray();
+//            dd($group_news);
+            $group_news = array_column(json_decode(json_encode($group_news),true),'id');
+            $latestpost = DB::table($this->db->news)->whereIn('groupid', $group_news)->paginate(6);
+            $data = [
+                "latestpost" => $latestpost,
+                "banner" => $banner,
+                "gr_childs" => $gr_childs,
+                "group" => $group,
+                "breadcrumb" => array_reverse($breadcrumb)
+            ];
+            return view('client.page.list', $data);
             dd('mutiple');
         }
     }

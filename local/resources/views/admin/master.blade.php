@@ -6,8 +6,9 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <base href="{{ asset('local/resources/assets/admin') }}/">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <link rel="shortcut icon" href="../images/icon.png" />
-  <title>VNHN | @yield('title')</title>
+  <link href="../images/home/kl_icon.png" rel="shortcut icon" type="image/x-icon" />
+  <link href="../images/home/kl_icon.png" rel="icon" type="image/x-icon" />
+  <title>KimLong | @yield('title')</title>
 
   <link rel="stylesheet" type="text/css" href="../css/all.css">
   <!-- Font Awesome Icons -->

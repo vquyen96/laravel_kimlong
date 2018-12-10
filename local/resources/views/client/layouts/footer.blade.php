@@ -3,19 +3,21 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="et-foter-title">
-                    <p class="et-foter-sub-title text-uppercase">recent tweets</p>
+                    <p class="et-foter-sub-title text-uppercase text-kl">CÔNG TY CỔ PHẦN QUỐC TẾ KIM LONG</p>
                 </div>
                 <div class="et-twitter-feed-widget">
                     <ul>
-                        <li><a class="et-twitter-spacing" href="#"><span class="text-thm">@market </span> Phasellus lacus nulla, tristique in nibh eget, dignissim fermentum mi. Vestibulum egestas. <span class="text-thm">about 1 min ago</span></a></li>
-                        <li><a href="#"><span class="text-thm">@market </span> Phasellus lacus nulla, tristique in nibh eget, dignissim fermentum mi. Vestibulum egestas. <span class="text-thm">about 1 min ago</span></a></li>
+                        <li><span class="text-thm">{{ $web_info->location1 }} </span><br>Địa chỉ: {{ $web_info->address1 }}<br>Tel: {{ $web_info->tel1 }} {{ $web_info->fax1 != null ? 'Fax: '.$web_info->fax1 : '' }}<br>{{ $web_info->email1 != null ? 'Email: '.$web_info->email1 : '' }}</li>
+                        <li><span class="text-thm">{{ $web_info->location2 }} </span><br>Địa chỉ: {{ $web_info->address2 }}<br>Tel: {{ $web_info->tel2 }} {{ $web_info->fax2 != null ? 'Fax: '.$web_info->fax2 : '' }}<br>{{ $web_info->email2 != null ? 'Email: '.$web_info->email2 : '' }}</li>
+                        <li><span class="text-thm">{{ $web_info->location3 }} </span><br>Địa chỉ: {{ $web_info->address3 }}<br>Tel: {{ $web_info->tel3 }} {{ $web_info->fax3 != null ? 'Fax: '.$web_info->fax3 : '' }}<br>{{ $web_info->email3 != null ? 'Email: '.$web_info->email3 : '' }}</li>
+                        {{--<li><a href="#"><span class="text-thm">@market </span> Phasellus lacus nulla, tristique in nibh eget, dignissim fermentum mi. Vestibulum egestas. <span class="text-thm">about 1 min ago</span></a></li>--}}
                     </ul>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 text-center">
                 <div class="foter-logo">
-                    <img src="images/footer-logo.png" alt="">
-                    <p> Phasellus interdum odio est, sed aliquet diam vestibulum sed. Vestibulum ante ipsum primis in.</p>
+                    <img src="images/home/logokimlong.png" alt="">
+                    <p> {{ $web_info->footer_mid }}</p>
                     <ul class="list-inline">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -25,81 +27,28 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="et-foter-title">
-                    <p class="et-foter-sub-title text-uppercase">flicker feed</p>
+                    <p class="et-foter-sub-title text-uppercase">Thư viện ảnh</p>
                 </div>
                 <div class="et-flickr-widget">
                     <div class="row">
+                        @foreach($images as $image)
                         <div class="col-xs-3 col-sm-4 col-md-3 et-extra-spcng">
                             <div class="et-thumb">
-                                <img class="img-responsive img-fluid" src="images/gallery/flkr6.jpg" alt="">
+                                <div class="img-responsive img-fluid" style="background: url('{{ asset('local/storage/app/images/resized200-'.$image->img) }}') no-repeat center /cover"></div>
                                 <div class="et-flckr-overlay">
                                     <i class="fa fa-search"></i>
+                                    <span class="d-none">{{ asset('local/storage/app/images/'.$image->img) }}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-3 col-sm-4 col-md-3 et-extra-spcng">
-                            <div class="et-thumb">
-                                <img class="img-responsive img-fluid" src="images/gallery/flkr7.jpg" alt="">
-                                <div class="et-flckr-overlay">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-3 col-sm-4 col-md-3 et-extra-spcng">
-                            <div class="et-thumb">
-                                <img class="img-responsive img-fluid" src="images/gallery/flkr8.jpg" alt="">
-                                <div class="et-flckr-overlay">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-3 col-sm-4 col-md-3 et-extra-spcng">
-                            <div class="et-thumb">
-                                <img class="img-responsive img-fluid" src="images/gallery/flkr9.jpg" alt="">
-                                <div class="et-flckr-overlay">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-3 col-sm-4 col-md-3 et-extra-spcng">
-                            <div class="et-thumb">
-                                <img class="img-responsive img-fluid" src="images/gallery/flkr10.jpg" alt="">
-                                <div class="et-flckr-overlay">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-3 col-sm-4 col-md-3 et-extra-spcng">
-                            <div class="et-thumb">
-                                <img class="img-responsive img-fluid" src="images/gallery/flkr11.jpg" alt="">
-                                <div class="et-flckr-overlay">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-3 col-sm-4 col-md-3 et-extra-spcng">
-                            <div class="et-thumb">
-                                <img class="img-responsive img-fluid" src="images/gallery/flkr12.jpg" alt="">
-                                <div class="et-flckr-overlay">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-3 col-sm-4 col-md-3 et-extra-spcng">
-                            <div class="et-thumb">
-                                <img class="img-responsive img-fluid" src="images/gallery/flkr13.jpg" alt="">
-                                <div class="et-flckr-overlay">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
-                <p class="copyright">Copyright ©2016 <span class="text-thm">wpthemeshaper.</span>  All Rights Reserved</p>
+                <p class="copyright">Copyright ©2018 <a href="" class="text-thm">Cgroupvn</a>  All Rights Reserved</p>
             </div>
         </div>
     </div>
