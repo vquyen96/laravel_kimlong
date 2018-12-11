@@ -31,7 +31,7 @@
                 </div>
                 <div class="et-flickr-widget">
                     <div class="row">
-                        @foreach($images as $image)
+                        @foreach($foter_images as $image)
                         <div class="col-xs-3 col-sm-4 col-md-3 et-extra-spcng">
                             <div class="et-thumb">
                                 <div class="img-responsive img-fluid" style="background: url('{{ asset('local/storage/app/images/resized200-'.$image->img) }}') no-repeat center /cover"></div>
@@ -54,3 +54,26 @@
     </div>
 </footer>
 <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            {{--<div class="modal-header">--}}
+                {{--<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>--}}
+                {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+                    {{--<span aria-hidden="true">&times;</span>--}}
+                {{--</button>--}}
+            {{--</div>--}}
+            <div class="modal-body">
+                <img src="" alt="" width="100%">
+            </div>
+            {{--<div class="modal-footer">--}}
+                {{--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
+                {{--<button type="button" class="btn btn-primary">Save changes</button>--}}
+            {{--</div>--}}
+        </div>
+    </div>
+</div>

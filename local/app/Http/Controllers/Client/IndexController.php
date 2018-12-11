@@ -6,7 +6,9 @@ use App\Model\Group_vn;
 use App\Models\AdvertTop;
 use App\Model\News;
 use App\Models\Banner;
+use App\Models\Contact;
 use App\Models\Groupvn;
+use App\Models\Image;
 use App\Models\Video_vn;
 use App\Models\Advert;
 use Illuminate\Http\Request;
@@ -222,6 +224,46 @@ class IndexController extends Controller
     public function time()
     {
         return view('client.index.time');
+    }
+    public function image(){
+        Session::get('lang','vn') == 'vn' ? $home_id = 1574 : $home_id = 1405 ;
+        $group = Groupvn::find($home_id);
+        $banner = Banner::where('group_id', $group->id)->inRandomOrder()->first();
+        Session::get('lang','vn') == 'vn' ? $home_id = 1574 : $home_id = 1405 ;
+        if ($banner == null){
+            $banner =  Banner::where('group_id', 1574)->inRandomOrder()->first();
+        }
+        $breadcrumb = $this->getBreadcrumb($group, $breadcrumb = []);
+        $images = Image::where('status', 1)->paginate(12);
+        $data = [
+            "banner" => $banner,
+            "images" => $images,
+            "breadcrumb" => array_reverse($breadcrumb)
+        ];
+        return view('client.page.image', $data);
+    }
+    public function contact($id){
+        $group = Groupvn::find($id);
+        $banner = Banner::where('group_id', $group->id)->inRandomOrder()->first();
+        Session::get('lang','vn') == 'vn' ? $home_id = 1574 : $home_id = 1405 ;
+        if ($banner == null){
+            $banner =  Banner::where('group_id', 1574)->inRandomOrder()->first();
+        }
+        $breadcrumb = $this->getBreadcrumb($group, $breadcrumb = []);
+        $data = [
+            "banner" => $banner,
+            "breadcrumb" => array_reverse($breadcrumb)
+        ];
+        return view('client.page.contact', $data);
+    }
+    public function postContact(Request $request){
+        $data = $request->all();
+        if (Contact::create($data)){
+            return redirect('/')->with('success','Gửi tin nhắn thành công');
+        }
+        else{
+            return 'Lỗi';
+        }
     }
 
     public function get_new_articel()

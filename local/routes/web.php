@@ -21,6 +21,9 @@ Route::group(['namespace' => 'Client'],function (){
     Route::get('/','IndexController@index')->name('home');
     Route::get('detail/{slug}','IndexController@detail')->name('detail');
     Route::get('group/{slug}','IndexController@group')->name('group');
+    Route::get('image','IndexController@image')->name('image');
+    Route::get('contact/{id}','IndexController@contact')->name('contact');
+    Route::post('contact','IndexController@postContact')->name('post_contact');
     Route::group(['prefix'=>'article'],function(){
         Route::get('/{slug}','ArticelController@get_detail')->name('get_detail_articel');
         Route::post('action_comment','ArticelController@action_comment')->name('action_comment');
@@ -119,7 +122,10 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::post('edit/{id}','BannerController@postEdit');
             Route::get('delete/{id}','BannerController@getDelete');
         });
-
+        Route::group(['prefix' => 'contact'], function() {
+            Route::get('/','ContactController@getList');
+            Route::get('delete/{id}','ContactController@getDelete');
+        });
         Route::group(['prefix' => 'profile'], function(){
             Route::get('/', 'ProfileController@getDetail');
             Route::post('/', 'ProfileController@postDetail');
@@ -165,6 +171,7 @@ Route::group(['namespace' => 'Admin'], function (){
                 Route::post('on', 'GroupController@getOn');
                 Route::post('off', 'GroupController@getOff');
                 Route::get('delete_home_index/{id}', 'GroupController@delete_home_index')->name('delete_home_index');
+                Route::get('detail/{id}', 'GroupController@getDetail')->name('detail_group');
 
             });
             Route::get('/group','GroupController@getList')->name('admin_group');

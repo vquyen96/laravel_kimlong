@@ -962,7 +962,7 @@ section {
     left: 0;
     position: absolute;
     right: 0;
-    text-align: center;
+    /*text-align: center;*/
     top: 0;
     transform: scale(0);
     -webkit-transition: all 0.4s ease-in-out 0s;
@@ -977,8 +977,12 @@ section {
   }
   .et-flickr-widget .et-thumb .et-flckr-overlay i {
     color: #ffffff;
-    font-size: 20px;
-    margin-top: 40%;
+    font-size: 22px;
+    /* margin-top: 40%; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   .et-extra-spcng {
     padding-right: 0;
@@ -1490,7 +1494,7 @@ section {
     position: relative;
   }
   .et-pagetitled::before {
-    background-color: rgba(28, 189, 233, 0.9);
+    background-color: rgba(169, 91, 91, 0.65);;
     content: "";
     height: 100%;
     left: 0;

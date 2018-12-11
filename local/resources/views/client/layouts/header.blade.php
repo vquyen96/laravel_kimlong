@@ -52,7 +52,7 @@
                             @endif
                         </li>
                     @endforeach
-                    <li class="active"><a href="{{ asset('contact') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ' : '联系我们' }}</a></li>
+                    {{--<li class="active"><a href="{{ asset('contact') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ' : '联系我们' }}</a></li>--}}
                 </ul>
             </nav>
         </div>

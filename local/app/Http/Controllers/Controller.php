@@ -40,7 +40,7 @@ class Controller extends BaseController
 //
 
             $images = Image::where('status', 1)->take(8)->get();
-            View::share('images',$images);
+            View::share('foter_images',$images);
 
             $groups = $this->getGroupClient();
             View::share('groups',$groups);

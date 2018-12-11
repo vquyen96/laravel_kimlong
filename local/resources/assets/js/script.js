@@ -535,7 +535,11 @@
     setTimeout(function(){
         $('.errorAlert').fadeOut();
     }, 3900);
-
+    $(document).on('click', '.et-flckr-overlay', function () {
+        var img = $(this).find('span').text();
+        $('#modalImage img').attr('src', img);
+        $('#modalImage').modal();
+    });
 
 
 

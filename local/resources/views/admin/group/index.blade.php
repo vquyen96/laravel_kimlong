@@ -80,7 +80,6 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-
                                     <th>#</th>
                                     <th>Tên danh mục</th>
                                     <th class="hideResponsive768">Mô tả danh mục</th>
@@ -108,6 +107,7 @@
                                             <div class="row form-group">
                                                 <a href="{{route('form_group',$group->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-6 text-primary"><i class="fa fa-wrench"></i></a>
                                                 <a data-toggle="tooltip" title="Xóa" href="{{route('delete_group',['id' =>$group->id,'group_id'=>isset($parentid) ? $parentid : 0])}}" class="col-sm-6 text-danger" onclick="return confirm('Bạn chắc chắn muốn xóa')" @if ($group->status != 0 ) style="display: none" @endif><i class="fa fa-trash"></i></a>
+                                                <a data-toggle="tooltip" title="Xem chi tiết" href="{{ route('detail_group', ['id' => $group->id]) }}" class="col-sm-6 text-dark"  @if ($group->status != 1 || $group->single != 1 || $group->link != null) style="display: none" @endif><i class="fas fa-info-circle"></i></a>
                                             </div>
                                         </td>
                                     </tr>

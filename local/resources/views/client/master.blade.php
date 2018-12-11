@@ -75,7 +75,7 @@
 <script type="text/javascript" src="revolution-slider/js/extensions/revolution.extension.parallax.min.js"></script>
 <script type="text/javascript" src="revolution-slider/js/extensions/revolution.extension.slideanims.min.js"></script>
 <script type="text/javascript" src="revolution-slider/js/extensions/revolution.extension.video.min.js"></script>
-
+@yield('script')
 <!-- END REVOLUTION SLIDER -->
 <script type="text/javascript">
     var url = $('.currentUrl').text();

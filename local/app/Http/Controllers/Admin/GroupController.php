@@ -108,6 +108,8 @@ class GroupController extends Controller
                     'titlemeta' => '',
                     'status' => 1,
                     'fimages' => '',
+                    'link' => '',
+                    'single' => 1,
                     'home_index' => 0
                 ];
 
@@ -263,6 +265,19 @@ class GroupController extends Controller
         return redirect('admin/group')->with('success', 'Sáp nhập thành công '.$request->id.'--'.$request->id_merge.' !');
     }
 
+    public function getDetail($id){
+        $group = Group_vn::find($id);
+        if ($group == null){
+            return redirect('/')->with('error', 'Không tìm thấy trang');
+        }
+        if ($group->single == 1){
+            $news = News::where('groupid', $id)->inRandomOrder()->first();
+            if ($news == null){
+                return redirect('admin')->with('error', 'Không tìm thấy trang');
+            }
+            return redirect('admin/articel/form_articel/'.$news->id)->with('success', $group->title);
+        }
+    }
     public function getOn(){
         $id = Input::get('id');
         $gr = Group_vn::find($id);

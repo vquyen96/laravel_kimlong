@@ -85,6 +85,22 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
+                    <a href="{{ asset('admin/banner') }}" class="nav-link @if (Request::segment(2) == 'banner') active @endif">
+                        <i class="nav-icon fas fa-image"></i>
+                        <p>
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Ảnh bìa' : 'Banner'}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ asset('admin/image') }}" class="nav-link @if (Request::segment(2) == 'image') active @endif">
+                        <i class="nav-icon fas fa-images"></i>
+                        <p>
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thư viện ảnh' : 'image'}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
                     <a href="{{ asset('admin') }}" class="nav-link  @if (Request::segment(2) == 'group') active @endif" >
                         <i class="nav-icon fas fa-ellipsis-h"></i>
                         <p>
@@ -148,6 +164,15 @@
                             {{--</a>--}}
                         {{--</li>--}}
                     </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview">
+                    <a href="{{ asset('admin/contact') }}" class="nav-link @if (Request::segment(2) == 'contact') active @endif">
+                        <i class="nav-icon fab fa-discourse"></i>
+                        <p>
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ' : 'contact'}}
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ asset('admin/website_info') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
