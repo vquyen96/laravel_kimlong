@@ -2243,7 +2243,7 @@ section {
     padding: 0;
   }
   .et-pzero {
-    padding: 0;
+    /*padding: 0;*/
   }
   .et-pdeght {
     padding: 15px;
@@ -2337,6 +2337,27 @@ section {
     -ms-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
     transition: all 300ms ease-in-out;
+  }
+  .et-blog-inner-search{
+    position: relative;
+  }
+  .searchValue {
+     position: absolute;
+     top: 100%;
+     left: 0;
+     width: 95%;
+     background: #fff;
+     z-index: 1;
+   }
+
+  .searchValue a {
+    display: block;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-top: 0;
+  }
+  .searchValue a:hover{
+    font-weight: 600;
   }
   .et-tag-list.et-tag-list a {
     color: #fff;

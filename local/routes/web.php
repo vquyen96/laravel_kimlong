@@ -28,7 +28,7 @@ Route::group(['namespace' => 'Client'],function (){
         Route::get('/{slug}','ArticelController@get_detail')->name('get_detail_articel');
         Route::post('action_comment','ArticelController@action_comment')->name('action_comment');
     });
-
+    Route::post('search', 'IndexController@getSearch');
 //    Route::group(['prefix' => 'group'],function(){
 //        Route::get('/{slug}','GroupController@get_articel_by_group')->name('get_articel_by_group');
 //    });
@@ -38,6 +38,7 @@ Route::group(['namespace' => 'Client'],function (){
     Route::post('article_view', 'IndexController@article_view');
 
     Route::get('about', 'ArticelController@getAbout');
+
 
 
 
@@ -114,7 +115,9 @@ Route::group(['namespace' => 'Admin'], function (){
 
 
         });
-
+        Route::group(['prefix' => 'recruitment'], function() {
+            Route::get('/','RecruitmentController@getList');
+        });
 
         Route::group(['prefix' => 'banner'], function() {
             Route::get('/','BannerController@getList');

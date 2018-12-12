@@ -12,17 +12,36 @@
             width: 85px;
             height: 85px;
         }
+        label.error {
+            font-size: 12px;
+            color: #ea4335;
+            font-style: initial;
+            font-weight: 400;
+        }
+        #myModal img{
+            width: 300px;
+        }
+        button.modal-btn {
+            /* width: 100px; */
+            margin: auto;
+            display: block;
+            background: #8b0202;
+            border: 0;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px 50px;
+        }
     </style>
     <div class="et-pagetitled" style="background-image: url('{{ asset('local/storage/app/banner/resized-'.$banner->img) }}');">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <div class="et-pgttl">Detail Sidebar Less</div>
-                    <div class="et-pgsbttl">recent new & post</div>
+                    <div class="et-pgttl">{{ $breadcrumb[count($breadcrumb)-1]->title }}</div>
+                    <div class="et-pgsbttl">{{ count($breadcrumb) > 1 ? $breadcrumb[count($breadcrumb)-2]->title : ''}}</div>
                 </div>
                 <div class="col-md-6 text-right">
                     <ul class="list-inline">
-                        <li class="et-lione"><a href="{{ asset('/') }}">Trang chủ </a></li>
+                        <li class="et-lione"><a href="{{ asset('/') }}">{{ $lang == 'vn' ? 'Trang chủ ' : '家 ' }}</a></li>
                         @foreach($breadcrumb as $item)
                             / <li class="et-litwo"><a href="{{ asset('group/'.$item->slug.'--n-'.$item->id) }}">{{ $item->title }}</a></li>
                         @endforeach
@@ -35,38 +54,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h3 class="text-uppercase">Liên hệ với chúng tôi</h3>
-                    <p>Điền đầy dủ thông tin dưới đây để chúng tôi có thể liện hệ lại với bạn trong thời gian sớm nhất !</p>
+                    <h3 class="text-uppercase">{{ $lang == 'vn' ? 'Liên hệ với chúng tôi' : '聯繫我們' }}</h3>
+                    <p>{{ $lang == 'vn' ? 'Điền đầy dủ thông tin dưới đây để chúng tôi có thể liện hệ lại với bạn trong thời gian sớm nhất !' : '填寫下面的表格，以便我們盡快回复您！' }}Đ</p>
                     <form id="contact_form" name="contact_form" class="contact-form" action="{{ asset('contact') }}" method="post" novalidate="novalidate">
                         {{ csrf_field() }}
                         <div class="messages"></div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input name="name" class="form-control " placeholder="Họ và tên" required type="text">
+                                    <input name="name" class="form-control " placeholder="{{ $lang == 'vn' ? 'Họ và tên' : '姓名' }}" required type="text">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input  name="email" class="form-control " placeholder="địa chỉ Email " required type="email">
+                                    <input  name="email" class="form-control " placeholder="{{ $lang == 'vn' ? 'Địa chỉ Email ' : '電郵地址' }}" required type="email">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input  name="phone" class="form-control  " placeholder="Số điện thoại" required type="text">
+                                    <input  name="phone" class="form-control  " placeholder="{{ $lang == 'vn' ? 'Số điện thoại' : '電話號碼' }}" required type="text">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input name="subject" class="form-control " placeholder="Chủ đề" required type="text">
+                                    <input name="subject" class="form-control " placeholder="{{ $lang == 'vn' ? 'Chủ đề' : '學科' }}" required type="text">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea  name="content" class="form-control " rows="4" placeholder="Nội dung" required></textarea>
+                            <textarea  name="content" class="form-control " rows="4" placeholder="{{ $lang == 'vn' ? 'Nội dung' : '內容' }}" required></textarea>
                         </div>
                         <div class="form-group text-right">
-                            <button type="submit" class="btn btn-lg btn-block et-button-styledark" data-loading-text="Getting Few Sec...">Gửi tin nhắn</button>
+                            <button type="submit" class="btn btn-lg btn-block et-button-styledark" data-loading-text="Getting Few Sec...">{{ $lang == 'vn' ? 'Gửi tin nhắn' : '發送信息' }}</button>
                         </div>
                     </form>
                 </div>
@@ -101,9 +120,30 @@
             </div>
         </div>
     </section>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <img class="modal-img" src="images/home/logokimlong.png">
+                    <h2 class="zz-heading-2 grey">CHÚC MỪNG BẠN ĐÃ ĐĂNG KÝ THÀNH CÔNG</h2>
+                    <p class="modal-p">Chúng tôi sẽ liên lạc lại với bạn trong thời gian sớm nhất.</p>
+                    <button class="modal-btn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 @section('script')
+    @if( Session::has('success') )
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#myModal').modal('show');
+            });
+        </script>
+    @endif
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyABqK-5ngi3F1hrEsk7-mCcBPsjHM5_Gj0"></script>
     <script src="js/jquery.googlemap.js"></script>
     <script src="js/jquery.validate.js"></script>
@@ -153,21 +193,21 @@
                 },
                 messages: {
                     "name": {
-                        required: "Bắt buộc nhập tên của bạn"
+                        required: "{{ $lang == 'vn' ? 'Bắt buộc nhập tên của bạn' : '強制輸入你的名字' }}"
                     },
                     "email": {
-                        required: "Bắt buộc phải điền email của bạn",
-                        email: "Email của bạn không đúng định dạng"
+                        required: "{{ $lang == 'vn' ? 'Bắt buộc phải điền email của bạn' : '需要完成您的電子郵件' }}",
+                        email: "{{ $lang == 'vn' ? 'Email của bạn không đúng định dạng' : '您的電子郵件格式不正確' }}"
                     },
                     "phone": {
-                        required: "Bắt buộc phải điền số điện thoại",
+                        required: "{{ $lang == 'vn' ? 'Bắt buộc phải điền số điện thoại' : '所需的電話號碼' }}",
                         phone: "Số điện thoại của bạn không hợp lệ",
                     },
                     "subject": {
-                        required: "Bạn phải điền chủ đề muốn đề cập đến",
+                        required: "{{ $lang == 'vn' ? 'Bạn phải điền chủ đề muốn đề cập đến' : '您必須輸入要提及的主題' }}",
                     },
                     "content": {
-                        required: "Bạn phải điền nội dung muốn gửi",
+                        required: "{{ $lang == 'vn' ? 'Bạn phải điền nội dung muốn gửi' : '您必須輸入要發送的內容' }}",
                     },
                 }
             });

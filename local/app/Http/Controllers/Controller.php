@@ -38,6 +38,8 @@ class Controller extends BaseController
 //                View::share('level', $level);
 //            }
 //
+            $lang = \Config::get('app.locale');
+            View::share('lang',$lang);
 
             $images = Image::where('status', 1)->take(8)->get();
             View::share('foter_images',$images);

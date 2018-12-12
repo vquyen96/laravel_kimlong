@@ -162,8 +162,6 @@
 
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-info pull-right" style="margin-right: 10px">{{ $articel->id  ? 'Cập nhật' : 'Tạo mới' }}</button>
-
-
                                     </div>
                                 </div>
                             </form>
@@ -196,87 +194,12 @@
 
 
             //iCheck for checkbox and radio inputs
-            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-                checkboxClass: 'icheckbox_minimal-blue',
-                radioClass   : 'iradio_minimal-blue'
-            })
+            // $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            //     checkboxClass: 'icheckbox_minimal-blue',
+            //     radioClass   : 'iradio_minimal-blue'
+            // })
         });
-        $(document).ready(function(){
-            if ($('input[name="articel[hot_main]"]').attr('checked')) {
-                $("#hot-main").prop('disabled', false);
-            }else{
-                $("#hot-main").prop('disabled', true);
-            }
 
-            if ($('input[name="articel[hot_item]"]').attr('checked')) {
-                $("#hot-item").prop('disabled', false);
-            }else{
-                $("#hot-item").prop('disabled', true);
-            }
-
-
-            if ($('input[name="articel[hot_tiny]"]').attr('checked')) {
-                $("#hot-tiny").prop('disabled', false);
-            }else{
-                $("#hot-tiny").prop('disabled', true);
-            }
-            
-            $('.btn_return').click(function(){
-                $('input[name="articel[send]"]').val('1');
-                $('button[type="submit"]').click();
-            });
-            // $("#hot-item").prop('disabled', true);
-        });
-            
-        function hot_main(a) {
-            if(a){
-                // $('#hot-main').removeClass('d-none');
-                $("#hot-main").prop('disabled', false);
-                // document.getElementById("hot-main").disabled = false;
-            }else {
-                $("#hot-main").prop('disabled', true);
-                // document.getElementById("hot-main").disabled = true;
-                // $('#hot-main').addClass('d-none');
-            }
-        }
-
-        function hot_item(a) {
-            if(a){
-                $('#hot-item').prop('disabled', false);
-            }else {
-                $('#hot-item').prop('disabled', true);
-            }
-        }
-
-        function hot_tiny(a) {
-            if(a){
-                $('#hot-tiny').prop('disabled', false);
-            }else {
-                $('#hot-tiny').prop('disabled', true);
-            }
-        }
-        // $(document).on('change', '#group', function (e) {
-        //     var group_id = $(this).val();
-            
-
-        //     e.preventDefault();
-        //     $.ajax({
-        //         url: url+'/admin/articel/get_relate/'   ,
-        //         method: 'get',
-        //         dataType: 'json',
-        //     }).fail(function (ui, status) {
-        //         console.log('error');
-        //     }).done(function (data, status) {
-        //         console.log(data.content);
-        //         if(data.content){
-        //             console.log(data.content);
-        //             setTimeout(function () {
-        //                 $('#relate').html(data.content);
-        //                 // $('#relate').selectpicker('refresh');
-        //             },200);
-        //         }
-        //     })
-        // });
         
         
     </script>

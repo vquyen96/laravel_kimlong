@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="images/home/kl_icon.png" rel="shortcut icon" type="image/x-icon" />
     <link href="images/home/kl_icon.png" rel="icon" type="image/x-icon" />
     <!-- Plombiers Title -->
@@ -36,9 +37,9 @@
 <body>
 <div class="wrapper">
     <div class="currentUrl" style="display: none;">{{ asset('') }}</div>
-    <div class="errorAlert">
-        @include('errors.note')
-    </div>
+    {{--<div class="errorAlert">--}}
+        {{--@include('errors.note')--}}
+    {{--</div>--}}
     @include('client.layouts.header')
     @yield('main')
     @include('client.layouts.footer')

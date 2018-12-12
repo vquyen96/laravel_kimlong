@@ -27,7 +27,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="et-foter-title">
-                    <p class="et-foter-sub-title text-uppercase">Thư viện ảnh</p>
+                    <p class="et-foter-sub-title text-uppercase">{{ $lang == 'vn' ? 'Thư viện ảnh' : '照片庫' }}</p>
                 </div>
                 <div class="et-flickr-widget">
                     <div class="row">

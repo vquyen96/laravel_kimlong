@@ -29,7 +29,7 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item d-none d-sm-inline-block">
             <select id="lang" class="form-control" onchange="change_lang()">
-                <option {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'selected' : ''}} value="vn">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tiếng Việt' : 'Vietnamese'}}</option>
+                <option {{ $lang == 'vn' ? 'selected' : ''}} value="vn">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tiếng Việt' : 'Vietnamese'}}</option>
                 <option {{\Illuminate\Support\Facades\Config::get('app.locale') == 'en' ? 'selected' : ''}} value="en">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tiếng Trung' : 'Chinese'}}</option>
             </select>
         </li>

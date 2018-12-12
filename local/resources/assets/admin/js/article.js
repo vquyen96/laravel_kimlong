@@ -276,12 +276,7 @@ $(document).ready(function(){
 
   $(document).on('keypress', '.search_relate', function(e) {
     var search = $(this).val();
-    // console.log(search);
-    // var re_select = $('.relate_select_item');
-    // var list_id = '';
-    // for (var i = 0; i < re_select.length; i++) {
-    //   list_id += re_select.eq(i).attr('value') + ',';
-    // }
+
     list_id = get_relate_id_select();
     console.log(list_id);
     $.ajax({

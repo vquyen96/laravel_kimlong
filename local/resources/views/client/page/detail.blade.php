@@ -56,12 +56,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 text-left">
-					<div class="et-pgttl">Detail Sidebar Less</div>
-					<div class="et-pgsbttl">recent new & post</div>
+					<div class="et-pgttl">{{ $breadcrumb[count($breadcrumb)-1]->title }}</div>
+					<div class="et-pgsbttl">{{ count($breadcrumb) > 1 ? $breadcrumb[count($breadcrumb)-2]->title : ''}}</div>
 				</div>
 				<div class="col-md-6 text-right">
 					<ul class="list-inline">
-						<li class="et-lione"><a href="{{ asset('/') }}">Trang chủ </a></li>
+						<li class="et-lione"><a href="{{ asset('/') }}">{{ $lang == 'vn' ? 'Trang chủ ' : '家 ' }}</a></li>
 						@foreach($breadcrumb as $item)
 						 / <li class="et-litwo"><a href="{{ asset('group/'.$item->slug.'--n-'.$item->id) }}">{{ $item->title }}</a></li>
 						@endforeach
@@ -88,14 +88,15 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="et-blog-inner-search">
-						<form method="post">
-							<div class="input-group">
-								<input placeholder="Search" class="form-control et-bisrch search-input" name="search-field" type="text">
-								<span class="input-group-btn">
-			                    	<button type="submit" class="btn text-thm et-search"><i class="fa fa-search"></i></button>
-			                    </span>
-							</div>
-						</form>
+						<div class="input-group">
+							<input placeholder="Search" class="form-control et-bisrch search-input" name="search-field" type="text">
+							<span class="input-group-btn">
+								<button type="button" class="btn text-thm et-search"><i class="fa fa-search"></i></button>
+							</span>
+						</div>
+						<div class="searchValue">
+
+						</div>
 					</div>
 					<div class="et-categories et-inner-box">
 						<h3 class="et-popular-categori-ttl text-uppercase"><i class="pe-7s-paper-plane"></i> CATEGORIES</h3>
@@ -150,21 +151,21 @@
 							{{--</div>--}}
 						{{--</div>--}}
 					</div>
-					<div class="et-quote et-inner-box">
-					<h3 class="et-quot-ttl text-uppercase titleCustom"><i class="pe-7s-comment"></i> Quote of the Day</h3>
-					<p>In porttitor eleifend libero, vitae lobortis diam. Morbi feugiat nisl nisi, ut vehicula nulla venenatis vel. Etiam in sagittis tellus. Phasellus malesuada volutpat porttitor. Aliquam vitae magna pellentesque ex pretium posuere nec id nulla. Phasellus consequat .</p>
-					</div>
-					<div class="et-popular-tags et-inner-box">
-					<h3 class="et-popular-tag-ttl text-uppercase"><i class="pe-7s-comment"></i> populer <span class="text-thm">tag</span></h3>
-					<ul class="list-inline et-tag-list">
-					<li><a href="#">Education</a></li>
-					<li><a href="#">Crisis</a></li>
-					<li><a href="#">Water</a></li>
-					<li><a href="#">Small Business</a></li>
-					<li><a href="#">Giving</a></li>
-					<li><a href="#">Children</a></li>
-					</ul>
-					</div>
+					{{--<div class="et-quote et-inner-box">--}}
+						{{--<h3 class="et-quot-ttl text-uppercase titleCustom"><i class="pe-7s-comment"></i> Quote of the Day</h3>--}}
+						{{--<p>In porttitor eleifend libero, vitae lobortis diam. Morbi feugiat nisl nisi, ut vehicula nulla venenatis vel. Etiam in sagittis tellus. Phasellus malesuada volutpat porttitor. Aliquam vitae magna pellentesque ex pretium posuere nec id nulla. Phasellus consequat .</p>--}}
+					{{--</div>--}}
+					{{--<div class="et-popular-tags et-inner-box">--}}
+						{{--<h3 class="et-popular-tag-ttl text-uppercase"><i class="pe-7s-comment"></i> populer <span class="text-thm">tag</span></h3>--}}
+						{{--<ul class="list-inline et-tag-list">--}}
+							{{--<li><a href="#">Education</a></li>--}}
+							{{--<li><a href="#">Crisis</a></li>--}}
+							{{--<li><a href="#">Water</a></li>--}}
+							{{--<li><a href="#">Small Business</a></li>--}}
+							{{--<li><a href="#">Giving</a></li>--}}
+							{{--<li><a href="#">Children</a></li>--}}
+						{{--</ul>--}}
+					{{--</div>--}}
 				</div>
 				<div class="col-md-8 et-pzero">
 					<div class="et-blog-col et-blg-grid">
@@ -203,6 +204,33 @@
 			</div>
 		</div>
 	</section>
+@stop
+@section('script')
+	<script>
+        var url = $('.currentUrl').text();
+        $(document).on('keypress', '.search-input', function(e) {
+            var search = $(this).val();
+            $.ajax({
+                method: 'POST',
+                url: url+'search',
+                data: {
+                    '_token': $('meta[name="csrf-token"]').attr('content'),
+                    'search': search
+                },
+                success: function (resp) {
+                    if(resp){
+                        $('.searchValue').html(resp);
+                    }
+                },
+                error: function () {
+                    $('.searchValue').html('');
+                    console.log('error');
+                }
+            });
+
+
+        });
+	</script>
 @stop
 {{--&lt;!&ndash; Wrapper End &ndash;&gt;--}}
 {{--<script type="text/javascript" src="js/jquery.js"></script>--}}

@@ -94,7 +94,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ asset('admin/image') }}" class="nav-link @if (Request::segment(2) == 'image') active @endif">
-                        <i class="nav-icon fas fa-images"></i>
+                        <i class="nav-icon fas fa-camera"></i>
                         <p>
                             {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thư viện ảnh' : 'image'}}
                         </p>
@@ -166,6 +166,13 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
+                    <a href="{{ asset('admin/recruitment') }}" class="nav-link @if (Request::segment(2) == 'recruitment') active @endif">
+                        <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                        <p>
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tuyển dụng' : '招聘'}}
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ asset('admin/contact') }}" class="nav-link @if (Request::segment(2) == 'contact') active @endif">
                         <i class="nav-icon fab fa-discourse"></i>

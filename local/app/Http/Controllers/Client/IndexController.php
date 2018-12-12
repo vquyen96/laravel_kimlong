@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use App\Models\MagazineNew;
+use Illuminate\Support\Facades\View;
 
 class IndexController extends Controller
 {
@@ -226,13 +227,15 @@ class IndexController extends Controller
         return view('client.index.time');
     }
     public function image(){
-        Session::get('lang','vn') == 'vn' ? $home_id = 1574 : $home_id = 1405 ;
-        $group = Groupvn::find($home_id);
+        Session::get('lang','vn') == 'vn' ? $image_id = 1575 : $image_id = 1435 ;
+        $group = Groupvn::find($image_id);
         $banner = Banner::where('group_id', $group->id)->inRandomOrder()->first();
-        Session::get('lang','vn') == 'vn' ? $home_id = 1574 : $home_id = 1405 ;
+
+        Session::get('lang','vn') == 'vn' ? $home_id = '1574' : $home_id = '1405' ;
         if ($banner == null){
             $banner =  Banner::where('group_id', 1574)->inRandomOrder()->first();
         }
+
         $breadcrumb = $this->getBreadcrumb($group, $breadcrumb = []);
         $images = Image::where('status', 1)->paginate(12);
         $data = [
@@ -259,11 +262,24 @@ class IndexController extends Controller
     public function postContact(Request $request){
         $data = $request->all();
         if (Contact::create($data)){
-            return redirect('/')->with('success','Gửi tin nhắn thành công');
+            return back()->with('success','modal');
         }
         else{
             return 'Lỗi';
         }
+    }
+
+    public function getSearch(){
+        $search = Input::get('search');
+        $list_article = DB::table($this->db->news)->where(function ($query) use ($search){
+            $query->where('title','like',"%".$search."%")->orWhere('summary','like',"%".$search."%");
+        })->where('status', 1)->orderByDesc('id')->take(5)->get();
+        $data = [
+            'list_article' => $list_article
+        ];
+
+        $view = View::make('client.tinypage.searchvalue',$data)->render();
+        return response($view, 200);
     }
 
     public function get_new_articel()

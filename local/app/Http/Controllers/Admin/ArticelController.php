@@ -32,20 +32,26 @@ class ArticelController extends Controller
 
         // $to = time();
 
-        $user = Auth::user();
-        $group_ids = explode(',',$user->group_id);
-        if(in_array(0, $group_ids)){
-            $list_group = DB::table($this->db->group)->where('status', 1)->orderBy('order', 'asc')->get()->toArray();
-            
-        }else {
-            $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
-                $query->whereIn('id',$group_ids)
-                      ->orWhereIn('parentid',$group_ids);
-            })->get()->toArray();
-        }
+//        $user = Auth::user();
+//        $group_ids = explode(',',$user->group_id);
+//        if(in_array(0, $group_ids)){
+//            $list_group = DB::table($this->db->group)->where('status', 1)->orderBy('order', 'asc')->get()->toArray();
+//
+//        }else {
+//            $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
+//                $query->whereIn('id',$group_ids)
+//                      ->orWhereIn('parentid',$group_ids);
+//            })->get()->toArray();
+//        }
+        Session::get('lang','vn') == 'vn' ? $group_ids = ['1569'] : $group_ids = ['1409'] ;
+        $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
+            $query->whereIn('id',$group_ids)
+                ->orWhereIn('parentid',$group_ids);
+        })->get();
+
         if (count($list_group)) $this->recusiveGroup($list_group,0,"",$result);
         else $result = [];
-        
+
 
         if (in_array(0 ,$group_ids)) {
             $group_ids = [];
@@ -137,10 +143,11 @@ class ArticelController extends Controller
         }
 
         if(count($group_id)){
-            $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$group_id)->get(['news_vn_id'])->toArray();
-            $list_articel_ids = array_column(json_decode(json_encode($list_articel_ids),true),'news_vn_id');
-
-            $list_articel =  $list_articel->whereIn('id',$list_articel_ids);
+//            $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$group_id)->get(['news_vn_id'])->toArray();
+//            $list_articel_ids = array_column(json_decode(json_encode($list_articel_ids),true),'news_vn_id');
+            $group_id_child = Group_vn::whereIn('parentid', $group_id)->get(['id'])->toArray();
+            $group_id_child = array_column(json_decode(json_encode($group_id_child),true),'id');
+            $list_articel =  $list_articel->whereIn('groupid',$group_id)->orWhereIn('groupid', $group_id_child);
 
         }
 
@@ -696,8 +703,6 @@ class ArticelController extends Controller
             ];
             $article = (object)$data;
         }else{
-
-            
             $article_model = News::find($id);
             if ($article_model == null) {
                 return redirect('admin/articel');

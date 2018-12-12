@@ -23,12 +23,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <div class="et-pgttl">Detail Sidebar Less</div>
-                    <div class="et-pgsbttl">recent new & post</div>
+                    <div class="et-pgttl">{{ $breadcrumb[count($breadcrumb)-1]->title }}</div>
+                    <div class="et-pgsbttl">{{ count($breadcrumb) > 1 ? $breadcrumb[count($breadcrumb)-2]->title : ''}}</div>
                 </div>
                 <div class="col-md-6 text-right">
                     <ul class="list-inline">
-                        <li class="et-lione"><a href="{{ asset('/') }}">Trang chủ </a></li>
+                        <li class="et-lione"><a href="{{ asset('/') }}">{{ $lang == 'vn' ? 'Trang chủ ' : '家 ' }}</a></li>
                         @foreach($breadcrumb as $item)
                             / <li class="et-litwo"><a href="{{ asset('group/'.$item->slug.'--n-'.$item->id) }}">{{ $item->title }}</a></li>
                         @endforeach

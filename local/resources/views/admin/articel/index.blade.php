@@ -64,42 +64,6 @@
                                              
                                         </div>
 
-                                        @if(Request::segment(3) == null)
-                                        
-                                        <div class="col-md-1 mb-2">
-                                            <select class="form-control select2" multiple="multiple"
-                                                    data-placeholder="Trạng thái" name="articel[status][]"
-                                                    style="width: 100%;">
-                                                {{-- @if(Auth::user()->level == 2 || Auth::user()->level == 1 ) --}}
-                                                <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(0,$paramater['status']) ? 'selected' : '' : ''}} value="0">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Dừng' : 'Stop'}}</option>
-                                                <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(1,$paramater['status']) ? 'selected' : '' : ''}} value="1">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đang chạy' : 'Running'}}</option>
-                                                {{-- @endif --}}
-
-                                                @if(Auth::user()->level == 1)
-                                                <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(2,$paramater['status']) ? 'selected' : '' : ''}} value="2">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chờ duyệt lần 2' : 'Wait for approval(2)'}}</option>
-                                                <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(3,$paramater['status']) ? 'selected' : '' : ''}} value="3">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chờ duyệt lần 1' : 'Wait for approval(1)'}}</option>
-                                                <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(4,$paramater['status']) ? 'selected' : '' : ''}} value="4">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trả lại' : 'Returned'}}</option>
-                                                @endif
-
-                                                @if (Auth::user()->level > 2)
-                                                <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(Auth::user()->level ,$paramater['status']) ? 'selected' : '' : ''}} value="{{ Auth::user()->level }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trả lại' : 'Return'}}</option>
-                                                <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(2,$paramater['status']) ? 'selected' : '' : ''}} value="2">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chờ duyệt' : 'Wait'}}</option>
-                                                @endif
-                                                
-                                            </select>
-                                        </div>
-
-                                        @endif
-                                        @if(Auth::user()->site == 1 && Auth::user()->level < 3)
-                                        <div class="col-md-1 mb-2">
-                                            <select class="form-control select2" multiple="multiple"
-                                                    data-placeholder="Công ty" name="articel[site][]"
-                                                    style="width: 100%;">
-                                                <option {{isset($paramater['site']) && count($paramater['site']) ? in_array(1,$paramater['site']) ? 'selected' : '' : ''}} value="1">Cgroup</option>
-                                                <option {{isset($paramater['site']) && count($paramater['site']) ? in_array(2,$paramater['site']) ? 'selected' : '' : ''}} value="2">VNHN</option>
-                                            </select>
-                                        </div>
-                                        @endif
                                         @if(Auth::user()->level < 3)
                                         <div class="col-md-2 mb-2">
                                             <select class="form-control select2" multiple="multiple"
@@ -161,7 +125,6 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thời gian' : 'Post time'}}</th>
                                     <th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Hình ảnh' : 'Image'}}</th>
                                     
                                     <th class="titleTable">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tiêu đề bài viết' : 'Title'}}</th>
@@ -181,46 +144,7 @@
                                 <tbody>
                                 @foreach($list_articel as $articel)
                                     <tr>
-                                        <td>
-                                            <div class="articleTime">
-                                                <div class="articleTimeShow">
-                                                    <div class="articleTimeShowDay">
-                                                        {{$articel->release_time->day}}
-                                                    </div>
-                                                    <div class="articleTimeShowH">
-                                                        {{$articel->release_time->h}}
-                                                    </div>
-                                                     
-                                                </div>
-                                                <div class="articleTimeBtnEdit">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </div>
-                                                <div class="articleTimeHide">
-                                                    <div>
-                                                        <input type="date" name="articel[release_time][day]" required
-                                                           value="{{$articel->release_time->day}}" min="1000-01-01"
-                                                           max="3000-12-31" class="form-control" style="font-size: 12px;">
-                                                    </div>
-                                                    
-                                                    <div class="input-group">
-                                                        <input type="text" name="articel[release_time][h]"
-                                                               value="{{$articel->release_time->h}}" class="form-control timepicker">
-                                                        @if ($articel->status != 1 || Auth::user()->level <=  $articel->status+1)
-                                                            <div class="input-group-append btn_send_time">
-                                                                <span class="input-group-text bg-danger">
-                                                                    <i class="far fa-check-circle"></i>
-                                                                </span>
-                                                            </div>
-                                                        @endif
-                                                            
-                                                        <div class="id_group" style="display: none;">{{$articel->id}}</div>
-                                                    </div>
-                                                    <!-- /.form group -->
-                                                </div>
-                                            </div>
 
-                                                    
-                                        </td>
                                         <td>
                                             <div class="avatar">
                                                 <img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized200-'.$articel->fimage)) ? asset('local/storage/app/article/resized200-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}">
