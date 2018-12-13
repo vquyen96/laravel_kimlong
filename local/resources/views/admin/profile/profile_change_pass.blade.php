@@ -8,12 +8,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Hồ sơ cá nhân</h1>
+          <h1>{{ $lang == "vn" ? 'Hồ sơ cá nhân' : '輪廓' }}</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Trang chủ</a></li>
-            <li class="breadcrumb-item active">Hồ sơ</li>
+            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $lang == "vn" ? 'Trang chủ' : '家' }}</a></li>
+            <li class="breadcrumb-item active">{{ $lang == "vn" ? 'Hồ sơ cá nhân' : '輪廓' }}</li>
           </ol>
         </div>
       </div>
@@ -37,20 +37,20 @@
 
               <ul class="list-group list-group-unbordered mb-3">
                 <li class="list-group-item">
-                  <b>Tên đăng nhập</b> <a class="float-right">{{$item->username}}</a>
+                  <b>{{ $lang == 'vn' ? 'Tên đăng nhập' : '用戶名'}}</b> <a class="float-right">{{$item->username}}</a>
                 </li>
                 <li class="list-group-item">
                   <b>Email</b> <a class="float-right">{{$item->email}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Điện thoại</b> <a class="float-right">{{$item->phone}}</a>
+                  <b>{{ $lang == 'vn' ? 'Điện thoại' : '電話'}}</b> <a class="float-right">{{$item->phone}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Ngày tạo</b> <a class="float-right">{{date_format($item->created_at,"h:m d-m-Y")}}</a>
+                  <b>{{ $lang == 'vn' ? 'Ngày tạo' : '創作日期'}}</b> <a class="float-right">{{date_format($item->created_at,"h:m d-m-Y")}}</a>
                 </li>
               </ul>
 
-              <a href="{{ asset('admin/profile') }}" class="btn btn-danger btn-block"><b>Thay đổi thông tin</b></a>
+              <a href="{{ asset('admin/profile') }}" class="btn btn-danger btn-block"><b>{{ $lang == 'vn' ? 'Thay đổi thông tin' : '更改信息'}}</b></a>
             </div>
             <!-- /.card-body -->
           </div>
@@ -58,28 +58,28 @@
         <div class="col-md-8">
           <div class="card card-danger">
             <div class="card-header">
-              <h3 class="card-title">Chỉnh sửa hồ sơ</h3>
+              <h3 class="card-title">{{ $lang == 'vn' ? 'Chỉnh sửa hồ sơ' : '編輯檔案'}}</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
             <form role="form" method="post" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
-                    <label>Mật khẩu cũ</label>
-                    <input type="password" class="form-control" placeholder="Điền mật khẩu cũ" name="old_password">
+                    <label>{{ $lang == 'vn' ? 'Mật khẩu cũ' : '舊密碼'}}</label>
+                    <input type="password" class="form-control" placeholder="{{ $lang == 'vn' ? 'Mật khẩu cũ' : '舊密碼'}}" name="old_password">
                 </div>
                 <div class="form-group">
-                    <label>Mật khẩu mới</label>
-                    <input type="password" class="form-control" placeholder="Điền mật khẩu mới" name="new_password">
+                    <label>{{ $lang == 'vn' ? 'Mật khẩu mới' : '新密碼'}}</label>
+                    <input type="password" class="form-control" placeholder="{{ $lang == 'vn' ? 'Mật khẩu mới' : '新密碼'}}" name="new_password">
                 </div>
                 <div class="form-group">
-                    <label>Xác nhận lại mật khẩu</label>
-                    <input type="password" class="form-control" placeholder="Điền lại mật khẩu mới" name="re_new_password"> 
+                    <label>{{ $lang == 'vn' ? 'Xác nhận lại mật khẩu' : '確認密碼'}}</label>
+                    <input type="password" class="form-control" placeholder="{{ $lang == 'vn' ? 'Xác nhận lại mật khẩu' : '確認密碼'}}" name="re_new_password">
                 </div>
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <input type="submit" class="btn btn-primary" value="Thay đổi">
+                <input type="submit" class="btn btn-primary" value="{{ $lang == "vn" ? "Thay đổi" : "變化" }}">
                 {{csrf_field()}}
               </div>
 

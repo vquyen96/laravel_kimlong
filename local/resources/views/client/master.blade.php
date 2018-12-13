@@ -28,11 +28,13 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-        /** {*/
-        /*font-family: 'Merriweather', serif !important;*/
-        /*}*/
-    </style>
+    <meta property="og:url" content="{{ URL::current() }}" />
+    <meta property="og:type"          content="article" />
+    <meta property="og:title"         content="@yield('fb_title')" />
+    <meta property="og:description"   content="@yield('fb_des')" />
+    <meta property="og:image"         content="@yield('fb_img')" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="300" />
 </head>
 <body>
 <div class="wrapper">

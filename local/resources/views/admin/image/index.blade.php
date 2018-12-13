@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Hồ sơ')
+@section('title', $lang == "vn" ? "Thư viện ảnh" : "照片庫")
 @section('main')
     <style>
         .image-item{
@@ -40,12 +40,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Hồ sơ cá nhân</h1>
+                        <h1>{{ $lang == "vn" ? "Thư viện ảnh" : "照片庫"}}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Trang chủ</a></li>
-                            <li class="breadcrumb-item active">Hồ sơ</li>
+                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $lang == "vn" ? "Trang chủ" : "家"}}</a></li>
+                            <li class="breadcrumb-item active">{{ $lang == "vn" ? "Thư viện ảnh" : "照片庫"}}</li>
                         </ol>
                     </div>
                 </div>

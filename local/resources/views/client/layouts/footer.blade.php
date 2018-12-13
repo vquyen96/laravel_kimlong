@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="et-foter-title">
-                    <p class="et-foter-sub-title text-uppercase text-kl">CÔNG TY CỔ PHẦN QUỐC TẾ KIM LONG</p>
+                    <p class="et-foter-sub-title text-uppercase text-kl">{{ $web_info->footer_left }}</p>
                 </div>
                 <div class="et-twitter-feed-widget">
                     <ul>
@@ -17,7 +17,7 @@
             <div class="col-xs-12 col-sm-6 col-md-4 text-center">
                 <div class="foter-logo">
                     <img src="images/home/logokimlong.png" alt="">
-                    <p> {{ $web_info->footer_mid }}</p>
+                    <p> {{ $web_info->footer_mid1 }}</p>
                     <ul class="list-inline">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -27,7 +27,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="et-foter-title">
-                    <p class="et-foter-sub-title text-uppercase">{{ $lang == 'vn' ? 'Thư viện ảnh' : '照片庫' }}</p>
+                    <p class="et-foter-sub-title text-uppercase"> {{ $web_info->footer_right }}</p>
                 </div>
                 <div class="et-flickr-widget">
                     <div class="row">
@@ -48,7 +48,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
-                <p class="copyright">Copyright ©2018 <a href="" class="text-thm">Cgroupvn</a>  All Rights Reserved</p>
+                <p class="copyright">{{ $web_info->footer_mid2 }}</p>
             </div>
         </div>
     </div>

@@ -55,43 +55,19 @@ class AccountController extends Controller
     public function postAdd(AccountAddRequest $request){
     	$acc = new Account;
     	$acc->username = $request->username;
-    	$request->fullname != null ? $acc->fullname = $request->fullname : $acc->fullname = 'Chưa có';
+    	$request->fullname != null ? $acc->fullname = $request->fullname : $acc->fullname = 'None';
         $request->email != null ? $acc->email = $request->email : $acc->email = 'email@email.com';
         $request->phone != null ? $acc->phone = $request->phone : $acc->phone = '19001001';
         $request->password != null ? $acc->password = bcrypt($request->password) : $acc->password = bcrypt('9876543210');
-    	$request->level != null ? $acc->level = $request->level : $acc->level = 4;
+        $acc->level = 2;
     	$acc->status = 1;
-        if ($request->group_id != null) {
-            
-            if (Session::get('lang', 'vn') == 'vn') {
-                $acc->group_id = implode(",", $request->group_id);
-            } else {
-                $acc->group_id_en = implode(",", $request->group_id);
-
-            }
-        }
-        else{
-            if (Session::get('lang', 'vn') == 'vn') {
-                $acc->group_id = null;
-            } else {
-                $acc->group_id_en = null;
-            }
-            
-        }
-        
-        // site : các bên khác nhau
-        if (Auth::user()->level == 1) {
-            $acc->site = $request->site;
-        }
-        else{
-            $acc->site = Auth::user()->site;
-        }
+        $acc->group_id = 0;
+        $acc->site = 1;
     	$image = $request->file('img');
         if ($request->hasFile('img')) {
             $acc->img = saveImage([$image], 100, 'avatar');
         }
         $acc->save();
-
     	return redirect('admin/account')->with('success','Thêm tài khoản thành công');
     }
     public function getEdit($id){
@@ -105,7 +81,7 @@ class AccountController extends Controller
             $data['gr_acc'] = Account::find($id)->group_id_en;
         }
         $group_id = explode(',', $group_id);
-        
+
         // $data['gr_acc'] = Account::find($id)->group_id;
         $data['gr_acc'] = explode(',', $data['gr_acc']);
         if (in_array(0 ,$group_id)) {
@@ -133,33 +109,7 @@ class AccountController extends Controller
         $request->email != null ? $acc->email = $request->email : $acc->email = 'email@email.com';
         $request->phone != null ? $acc->phone = $request->phone : $acc->phone = '19001001';
         $request->password != null ? $acc->password = bcrypt($request->password) : $acc->password;
-        $request->level != null ? $acc->level = $request->level : $acc->level = 4;
-        if ($request->group_id != null) {
-            if (Session::get('lang', 'vn') == 'vn') {
-                $acc->group_id = implode(",", $request->group_id);
-            } else {
-                $acc->group_id_en = implode(",", $request->group_id);
-                // dd( $acc->group_id_en);
-            }
-            
-        }
-        else{
-            if (Session::get('lang', 'vn') == 'vn') {
-                $acc->group_id = null;
-            } else {
-                $acc->group_id_en = null;
-            }
-        }
-        // site : các bên khác nhau
-        if (Auth::user()->level == 1) {
-            $acc->site = $request->site;
-        }
-        else{
-            $acc->site = Auth::user()->site;
-        }
-
     	$image = $request->file('img');
-
         if ($request->hasFile('img')) {
             $acc->img = saveImage([$image], 100, 'avatar');
         }

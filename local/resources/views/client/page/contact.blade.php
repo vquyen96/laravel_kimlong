@@ -1,6 +1,9 @@
 @extends('client.master')
 
 @section('title', 'Công ty cổ phần Quốc Tế Kim Long')
+@section('fb_title', $web_info->footer_left)
+@section('fb_des', $web_info->footer_mid1)
+@section('fb_img', '')
 @section('main')
 
     <style>

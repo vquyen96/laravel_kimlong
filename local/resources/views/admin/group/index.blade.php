@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 ">Danh sách Danh mục</h1>
+                        <h1 class="m-0 ">{{ $lang == "vn" ? "Danh sách Danh mục" : "類別清單"}}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Danh sách danh mục</li>
+                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $lang == "vn" ? "Trang chủ" : "家"}}</a></li>
+                            <li class="breadcrumb-item active">{{ $lang == "vn" ? "Danh sách Danh mục" : "類別清單"}}</li>
                         </ol>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                             <div class="row form-group">
                                 <div class="col-md-2">
                                     @if (Auth::user()->site == 1)
-                                        <a href="{{route('form_group',0)}}" class="btn btn-primary"><h3 class="card-title">Thêm mới danh mục</h3></a>
+                                        <a href="{{route('form_group',0)}}" class="btn btn-primary"><h3 class="card-title">{{ $lang == "vn" ? "Thêm mới danh mục" : "添加新類別"}}</h3></a>
                                     @endif
                                 </div>
                                 
@@ -50,13 +50,13 @@
                                     <form action="{{route('admin_group')}}" method="get">
                                         <div class="row form-group">
                                             <div class="col-md-4">
-                                                <input value="{{isset($paramater['key_search']) ? $paramater['key_search'] : ''}}" class="form-control" name="key_search" placeholder="Từ khóa tìm kiếm">
+                                                <input value="{{isset($paramater['key_search']) ? $paramater['key_search'] : ''}}" class="form-control" name="key_search" placeholder="{{ $lang == "vn" ? "Từ khóa tìm kiếm" : "搜索關鍵字"}}">
                                             </div>
                                             <div class="col-md-4">
-                                                <select class="select2" data-placeholder="Chọn danh mục"
+                                                <select class="select2" data-placeholder="{{ $lang == "vn" ? "Chọn danh mục" : "選擇類別"}}"
                                                         name="groupid"
                                                         style="width: 100%;">
-                                                    <option value="null">Chọn danh mục</option>
+                                                    <option value="null">{{ $lang == "vn" ? "Chọn danh mục" : "選擇類別"}}</option>
                                                     @foreach($groups as $articel_item)
                                                         <option {{$parentid == $articel_item->id ? 'selected' : ''}}
                                                                 value="{{
@@ -67,7 +67,7 @@
                                             </div>
 
                                             <div class="col-md-3">
-                                                <button style="height: 90%" type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                                <button style="height: 90%" type="submit" class="btn btn-primary">{{ $lang == "vn" ? "Tìm kiếm" : "搜索"}}</button>
                                             </div>
                                         </div>
                                     </form>

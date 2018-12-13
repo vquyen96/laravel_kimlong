@@ -1,6 +1,10 @@
 @extends('client.master')
 
 @section('title', 'Công ty cổ phần Quốc Tế Kim Long')
+@section('fb_title', $web_info->footer_right)
+@section('fb_des', $web_info->footer_mid1)
+@section('fb_img', asset('local/storage/app/images/resized500-'.$images[0]->img))
+
 @section('main')
 
     <style>

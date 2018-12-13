@@ -247,6 +247,9 @@ class IndexController extends Controller
     }
     public function contact($id){
         $group = Groupvn::find($id);
+        if ($group == null){
+            return redirect('/')->with('error', 'Không tìm thấy trang');
+        }
         $banner = Banner::where('group_id', $group->id)->inRandomOrder()->first();
         Session::get('lang','vn') == 'vn' ? $home_id = 1574 : $home_id = 1405 ;
         if ($banner == null){

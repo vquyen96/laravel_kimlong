@@ -31,7 +31,7 @@
                     <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == '') active @endif">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Home' : 'Dashboard'}}
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Home' : '家'}}
                         </p>
                     </a>
                 </li>
@@ -40,7 +40,7 @@
                        class="nav-link @if (Request::segment(2) == 'account') active @endif">
                         <i class="fas fa-users-cog nav-icon"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản lí tài khoản' : 'Account management'}}
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản lí tài khoản' : '帳戶管理'}}
                             <i class="right fa fa-angle-left"></i>
                         </p>
                     </a>
@@ -48,13 +48,13 @@
                         <li class="nav-item">
                             <a href="{{ asset('admin/account') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách tài khoản' : 'Account list'}}</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách tài khoản' : '帳戶清單'}}</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ asset('admin/account/add') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thêm mới' : 'Add new'}}</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thêm mới' : '添新'}}</p>
                             </a>
                         </li>
 
@@ -64,7 +64,7 @@
                     <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'profile') active @endif">
                     <i class="fas fa-user-shield nav-icon"></i>
                     <p>
-                        {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Cá Nhân' : 'Profile'}}
+                        {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Cá Nhân' : '輪廓'}}
                         <i class="right fa fa-angle-left"></i>
                     </p>
                     </a>
@@ -72,13 +72,13 @@
                         <li class="nav-item">
                             <a href="{{ asset('admin/profile') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thông tin cá nhân' : 'Change information'}}</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thông tin cá nhân' : '更改信息'}}</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ asset('admin/profile/change_pass') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đổi mật khẩu' : 'Change Password'}}</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đổi mật khẩu' : '更改密碼'}}</p>
                             </a>
                         </li>
 
@@ -88,7 +88,7 @@
                     <a href="{{ asset('admin/banner') }}" class="nav-link @if (Request::segment(2) == 'banner') active @endif">
                         <i class="nav-icon fas fa-image"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Ảnh bìa' : 'Banner'}}
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Ảnh bìa' : '旗幟'}}
                         </p>
                     </a>
                 </li>
@@ -96,7 +96,7 @@
                     <a href="{{ asset('admin/image') }}" class="nav-link @if (Request::segment(2) == 'image') active @endif">
                         <i class="nav-icon fas fa-camera"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thư viện ảnh' : 'image'}}
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thư viện ảnh' : '照片庫'}}
                         </p>
                     </a>
                 </li>
@@ -104,7 +104,7 @@
                     <a href="{{ asset('admin') }}" class="nav-link  @if (Request::segment(2) == 'group') active @endif" >
                         <i class="nav-icon fas fa-ellipsis-h"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh mục' : 'Category'}}
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh mục' : '類別'}}
                             <i class="fa fa-angle-left right"></i>
                         </p>
                     </a>
@@ -113,7 +113,7 @@
                             <li class="nav-item">
                                 <a href="{{route('form_sort_group','00')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Sắp xếp trang chủ' : 'Sort Categories'}}</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Sắp xếp trang chủ' : '排序類別'}}</p>
                                 </a>
                             </li>
                         @endif
@@ -130,7 +130,7 @@
                         <li class="nav-item">
                             <a href="{{route('admin_group')}}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách mục' : 'Categories list'}}</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách mục' : '分類列表'}}</p>
                             </a>
                         </li>
                     </ul>
@@ -139,7 +139,7 @@
                     <a href="{{ asset('admin') }}" class="nav-link  @if (Request::segment(2) == 'articel') active @endif">
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản trị tin' : 'Article management'}}
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản trị tin' : '文章管理'}}
                             <i class="fa fa-angle-left right"></i>
                         </p>
                     </a>
@@ -147,14 +147,14 @@
                         <li class="nav-item">
                             <a href="{{route('admin_articel')}}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : 'Article list'}}</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : '文章列表'}}</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="{{route('form_articel',0)}}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Viết bài' : 'Add new'}}</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Viết bài' : '添新'}}</p>
                             </a>
                         </li>
                         {{--<li class="nav-item">--}}
@@ -177,7 +177,7 @@
                     <a href="{{ asset('admin/contact') }}" class="nav-link @if (Request::segment(2) == 'contact') active @endif">
                         <i class="nav-icon fab fa-discourse"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ' : 'contact'}}
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ' : '聯繫'}}
                         </p>
                     </a>
                 </li>
@@ -185,7 +185,7 @@
                     <a href="{{ asset('admin/website_info') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
                         <i class="nav-icon fas fa-info-circle"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thông tin website' : 'Website information '}}
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thông tin website' : '網站信息'}}
                         </p>
                     </a>
                 </li>
@@ -193,7 +193,7 @@
                     <a href="{{ asset('logout') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đăng xuất' : 'Logout '}}
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đăng xuất' : '登出 '}}
                         </p>
                     </a>
                 </li>

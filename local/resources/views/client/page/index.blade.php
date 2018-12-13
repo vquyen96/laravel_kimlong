@@ -1,6 +1,9 @@
 @extends('client.master')
 
 @section('title', 'Công ty cổ phần Quốc Tế Kim Long')
+@section('fb_title', $web_info->footer_left)
+@section('fb_des', $web_info->footer_mid1)
+@section('fb_img', asset("local/storage/app/article/resized500-".$content->fimage))
 @section('main')
 	<!-- Home Design -->
 	<div id="rev_slider_4_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="classicslider1" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">

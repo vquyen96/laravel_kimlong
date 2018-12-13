@@ -1,45 +1,10 @@
-{{--<!DOCTYPE html>--}}
-{{--<html dir="ltr" lang="en">--}}
-{{--<head>--}}
-	{{--<meta charset="utf-8">--}}
-	{{--<meta http-equiv="X-UA-Compatible" content="IE=edge">--}}
-	{{--<meta name="viewport" content="width=device-width, initial-scale=1">--}}
-	{{--<link href="images/home/anh11 (1).ico" rel="shortcut icon" type="image/x-icon" />--}}
-	{{--<link href="images/home/anh11 (1).ico" rel="icon" type="image/x-icon" />--}}
-	{{--&lt;!&ndash; Plombiers Title &ndash;&gt;--}}
-	{{--<title>Công ty CP Quốc tế kim long</title>--}}
-
-	{{--&lt;!&ndash; css file &ndash;&gt;--}}
-	{{--<link rel="stylesheet" href="css/bootstrap.min.css">--}}
-	{{--<link rel="stylesheet" href="css/style.css">--}}
-	{{--&lt;!&ndash; Responsive stylesheet &ndash;&gt;--}}
-	{{--<link rel="stylesheet" href="css/responsive.css">--}}
-	{{--<style>--}}
-		{{--img.media-object {--}}
-			{{--width: 90px;--}}
-			{{--height: 80px;--}}
-		{{--}--}}
-		{{--.et-thumb img.img-responsive.img-fluid {--}}
-			{{--width: 85px;--}}
-			{{--height: 85px;--}}
-		{{--}--}}
-		{{--.foter-logo img {--}}
-			{{--width: 36%;--}}
-		{{--}--}}
-	{{--</style>--}}
-	{{--&lt;!&ndash; HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries &ndash;&gt;--}}
-	{{--&lt;!&ndash; WARNING: Respond.js doesn't work if you view the page via file:// &ndash;&gt;--}}
-	{{--&lt;!&ndash;[if lt IE 9]>--}}
-	{{--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>--}}
-	{{--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
-	{{--<![endif]&ndash;&gt;--}}
-{{--</head>--}}
-{{--<body>--}}
-
 
 @extends('client.master')
 
-@section('title', 'Công ty cổ phần Quốc Tế Kim Long')
+@section('title', $news->title)
+@section('fb_title', $news->title)
+@section('fb_des', $news->summary)
+@section('fb_img', asset('local/storage/app/article/resized500-'.$news->fimage))
 @section('main')
 
 	<style>
@@ -183,22 +148,22 @@
 							<hr>
 						</div>
 					</div>
+					@if($news->tacgia != null)
 					<ul class="et-bpstcmnt list-inline">
-						<li><a href="#"><span class="fa fa-user"> posted by admin </span></a></li>
-						<li><a href="#"><span class="fa fa-cog"> plumber, fix, task</span></a></li>
-						<li><a href="#"><span class="fa fa-commenting-o"> 4 comments</span></a></li>
+						<li><a href="#"><span class="fa fa-user"> posted by {{ $news->tacgia }} </span></a></li>
 					</ul>
-					<div class="et-blog-innerp-fonticon">
-						<div class="et-share">
-							<ul class="list-inline et-inner-fi">
-								<li>Share:</li>
-								<li class="font-icon"><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li class="font-icon"><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li class="font-icon"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								<li class="font-icon"><a href="#"><i class="fa fa-youtube"></i></a></li>
-							</ul>
-						</div>
-					</div>
+					@endif
+					{{--<div class="et-blog-innerp-fonticon">--}}
+						{{--<div class="et-share">--}}
+							{{--<ul class="list-inline et-inner-fi">--}}
+								{{--<li>Share:</li>--}}
+								{{--<li class="font-icon"><a href="#"><i class="fa fa-facebook"></i></a></li>--}}
+								{{--<li class="font-icon"><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+								{{--<li class="font-icon"><a href="#"><i class="fa fa-google-plus"></i></a></li>--}}
+								{{--<li class="font-icon"><a href="#"><i class="fa fa-youtube"></i></a></li>--}}
+							{{--</ul>--}}
+						{{--</div>--}}
+					{{--</div>--}}
 
 				</div>
 			</div>
