@@ -103,6 +103,9 @@ class IndexController extends Controller
         Session::get('lang','vn') == 'vn' ? $services_id = 1557 : $services_id = 1407 ;
         $content = News::where('groupid', $home_id)->inRandomOrder()->first();
         // Get list services
+        $content->content = DB::table($this->db->logfile)->where('LogId',$content->id)->whereNotNull('noidung')->where('noidung','!=','')
+            ->orderByDesc
+            ('id')->first();
         $gr_services_id =  DB::table($this->db->group)->where('parentid', $services_id)->where('status', 1)->get(['id'])->toArray();
         $gr_services_id = array_column(json_decode(json_encode($gr_services_id),true),'id');
         $services = DB::table($this->db->news)->whereIn('groupid', $gr_services_id)->take(3)->get();

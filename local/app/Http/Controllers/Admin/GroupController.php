@@ -93,7 +93,6 @@ class GroupController extends Controller
                 'title' => 'root'
             ];
             $result[] = (object)$root;
-//            dd($list_group);
             $this->recusiveGroup($list_group,0,"",$result);
 
             if($id == 0){
@@ -275,7 +274,7 @@ class GroupController extends Controller
             if ($news == null){
                 return redirect('admin')->with('error', 'Không tìm thấy trang');
             }
-            return redirect('admin/articel/form_articel/'.$news->id)->with('success', $group->title);
+            return redirect('admin/articel/form_articel/'.$news->id)->with('success', 'Chi tiết - '.$group->title);
         }
     }
     public function getOn(){

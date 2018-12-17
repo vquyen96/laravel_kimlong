@@ -2626,3 +2626,14 @@ section {
   z-index: 9999;
   transition: 2s;
 }
+
+
+.et-service-contnt h3 a{
+  color: #000;
+}
+.et-blog-cntnt h3 a{
+  color: #000;
+}
+.media-heading a{
+  color: #000;
+}

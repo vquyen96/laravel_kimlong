@@ -16,36 +16,37 @@ class HomeController extends Controller
     public $view_id;
     public function getHome(Request $request){
         // return redirect('admin/articel');
-        $req = $request->all();
+//         $req = $request->all();
 
-        $from = strtotime(date('Y-m-1 0:0',time()));
-        $to = time();
+//         $from = strtotime(date('Y-m-1 0:0',time()));
+//         $to = time();
 
-        if (isset($req['from']) && isset($req['to'])){
-            $from = strtotime($req['from']."00:00");
-            $to = strtotime($req['to']."23:59");
-        }
+//         if (isset($req['from']) && isset($req['to'])){
+//             $from = strtotime($req['from']."00:00");
+//             $to = strtotime($req['to']."23:59");
+//         }
 
-        $data_google = [];
-        $analytics = $this->initializeAnalytics();
+//         $data_google = [];
+//         $analytics = $this->initializeAnalytics();
 
-        $response = $this->getReportPageView($analytics,$from,$to);
+//         $response = $this->getReportPageView($analytics,$from,$to);
      
-        $this->printResults($response,$data_google['page']);
+//         $this->printResults($response,$data_google['page']);
 
-        $user = $this->getReportUser($analytics,$from,$to);
-        $this->printResults($user,$data_google['user']);
+//         $user = $this->getReportUser($analytics,$from,$to);
+//         $this->printResults($user,$data_google['user']);
 
-//        dd($data_google);
+// //        dd($data_google);
 
-        $data = [
-            'data_google' => $data_google,
-            'from' =>  date('d/m/Y H:m',$from),
-            'to' => date('d/m/Y H:m',$to)
-        ];
+//         $data = [
+//             'data_google' => $data_google,
+//             'from' =>  date('d/m/Y H:m',$from),
+//             'to' => date('d/m/Y H:m',$to)
+//         ];
 
-        return view('admin.index.home',$data);
+        return view('admin.index.home');
     }
+
 
     function initializeAnalytics()
     {

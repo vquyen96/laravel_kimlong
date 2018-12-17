@@ -300,7 +300,7 @@
 						{{--<li>Duis vel nisi ut nibh efficitur sodales.</li>--}}
 					{{--</ul>--}}
 					{!! $content->summary !!}
-					<a href="#" class="btn btn-default btn-lg et-btn-thm">Read More <i class="lnr lnr-arrow-right"></i></a>
+					<a href="{{ asset('group/'.$groups[1]->slug.'--n-'.$groups[1]->id) }}" class="btn btn-default btn-lg et-btn-thm">Read More <i class="lnr lnr-arrow-right"></i></a>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6">
 					<div class="et-welcome-thumb text-right">
@@ -337,7 +337,7 @@
 							</div>
 						</div>
 						<div class="et-service-contnt">
-							<h3>{{ $service->title }}</h3>
+							<h3><a href="{{ asset('detail/'.$service->slug.'--n-'.$service->id) }}">{{ $service->title }}</a> </h3>
 							<p>{{ cut_string($service->summary, 250)  }}</p>
 							<a class="text-thm" href="{{ asset('detail/'.$service->slug.'--n-'.$service->id) }}">read more <i class="lnr lnr-arrow-right" aria-hidden="true"></i></a>
 							<div class="et-slash">//////////////////////////////////////////////////////</div>
@@ -376,13 +376,13 @@
 		                    {{--</div>--}}
 		                </div>
 	                    <div class="et-blog-cntnt">
-		                    <h3 class="et-blog-cntnt-title">{{ $new->title }}</h3>
+		                    <h3 class="et-blog-cntnt-title"><a href="{{ asset('detail/'.$new->slug.'--n-'.$new->id) }}">{{ $new->title }}</a></h3>
 		                    <p>{{ cut_string($new->summary, 250) }}</p>
 	                    </div>
 	                    <div class="et-blog-ftr">
 	                    	<ul class="list-inline">
 	                    		<li><a class="et-readmore pull-left text-uppercase" href="{{ asset('detail/'.$new->slug.'--n-'.$new->id) }}"> read more</a></li>
-	                    		<li><a class="et-date pull-right text-uppercase" href="{{ asset('detail/'.$new->slug.'--n-'.$new->id) }}"><i class="pe-7s-date"></i> April 5, 2016</a></li>
+	                    		<li><a class="et-date pull-right text-uppercase" href="{{ asset('detail/'.$new->slug.'--n-'.$new->id) }}"><i class="pe-7s-date"></i> {{ date('d M Y',$new->created_at) }}</a></li>
 	                    	</ul>
 	                    </div>
 	                </div>

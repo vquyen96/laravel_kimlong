@@ -78,9 +78,9 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12" style="padding-left: 30px">
-                    <div class="card card-info">
+                    <div class="card card-info d-none">
                         <div class="card-header">
-                            <h3 class="card-title">Thông tin</h3>
+                            <h3 class="card-title">Thông tin gốc</h3>
                         </div>
                         <form id="create_group" action="{{route('update_info_raw')}}" method="post">
                             {{csrf_field()}}

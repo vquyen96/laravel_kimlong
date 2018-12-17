@@ -85,8 +85,8 @@
 								</a>
 							</div>
 							<div class="media-body">
-								<h5 class="media-heading">{{ $news->title }}</h5>
-								<h6 class="et-bsmp-ttl">May 20, 2016</h6>
+								<h5 class="media-heading"><a href="{{ asset('detail/'.$news->slug.'--n-'.$news->id) }}">{{ $news->title }}</a> </h5>
+								<h6 class="et-bsmp-ttl">{{ date('d M Y',$news->created_at) }}</h6>
 								<a class="et-bsmpa" href="{{ asset('detail/'.$news->slug.'--n-'.$news->id) }}">Read More</a>
 							</div>
 						</div>

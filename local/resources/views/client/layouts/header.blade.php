@@ -17,7 +17,7 @@
                         <li><a href="{{ $web_info->pinterest }}"><i class="fa fa-pinterest"></i></a></li>
                         <li><a href="{{ $web_info->skype }}"><i class="fa fa-skype"></i></a></li>
                         <li><a style="cursor: pointer" onclick="set_lang('vn')">vi</a></li>
-                        <li><a style="cursor: pointer" onclick="set_lang('en')">ch</a></li>
+                        <li><a style="cursor: pointer" onclick="set_lang('en')">cn</a></li>
                     </ul>
                 </div>
             </div>
