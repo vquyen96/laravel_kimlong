@@ -1,5 +1,5 @@
 @extends('client.master')
-@section('title', 'Công ty cổ phần Quốc Tế Kim Long')
+@section('title', $web_info->title_web )
 @section('main')
     <style>
         img.media-object {
@@ -44,9 +44,10 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center et-service-sect">
                     <div class="et-services-title">
-                        <p class="et-services-sub-title text-thm text-uppercase">About our company</p>
-                        <h1 class="text-uppercase">our best <span class="text-kl">News list</span></h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit porro, blanditiis saepe tenetur dignissimos</p>
+                        
+                        <p class="et-services-sub-title text-thm text-uppercase">{{ $group->slug == "tuyen-dung" ? $web_info->recruitment_title1 : $web_info->news_title1 }}</p>
+                        <h1 class="text-uppercase titleCustom">{{ $group->slug == "tuyen-dung" ? $web_info->recruitment_title2 : $web_info->news_title2 }}</h1>
+                        <p>{{ $group->slug == "tuyen-dung" ? $web_info->recruitment_title3 : $web_info->news_title3 }}</p>
                         <!--<div class="et-service-icon">-->
                         <!--<span class="et-title-line"></span><img src="images/icons/plumber.png" alt=""><span class="et-title-line2"></span>-->
                         <!--</div>-->

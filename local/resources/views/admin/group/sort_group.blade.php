@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Thêm tài khoản')
+@section('title',$web_info->ad_cate_sort)
 @section('main')
 	
 <div class="content-wrapper">
@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>{{ $lang == "vn" ? "Sắp xếp danh mục" : "排序列表"}}</h1>
+            <h1>{{ $web_info->ad_cate_sort }}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $lang == "vn" ? "Trang chủ" : "家"}}</a></li>
-              <li class="breadcrumb-item active">{{ $lang == "vn" ? "Sắp xếp danh mục" : "排序列表"}}</li>
+              <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $web_info->ad_home }}</a></li>
+              <li class="breadcrumb-item active">{{ $web_info->ad_cate_sort }}</li>
             </ol>
           </div>
         </div>
@@ -42,7 +42,7 @@
 					<div class="card-header">
 						<h3 class="card-title">
 							<i class="ion ion-clipboard mr-1"></i>
-							{{ $lang == "vn" ? "Trang chủ" : "家"}}
+							{{ $web_info->ad_home }}
 						</h3>
 					</div>
 					<!-- /.card-header -->
@@ -72,7 +72,7 @@
 						</div>
 						<!-- /.card-body -->
 						<div class="card-footer clearfix">
-							<button type="submit" class="btn btn-info float-right"><i class="fa fa-plus"></i>{{ $lang == "vn" ? "Cập nhật" : "更新"}}
+							<button type="submit" class="btn btn-info float-right"><i class="fa fa-plus"></i>{{ $web_info->ad_cate_update }}
 							</button>
 						</div>
 					</form>

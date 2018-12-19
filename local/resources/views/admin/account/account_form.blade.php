@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', $lang == 'vn' ? (isset($item)? 'Thay đổi tài khoản' : 'Thêm mới tài khoản') : (isset($item)? '編輯賬戶' : '新增帳戶'))
+@section('title', $web_info->ad_acc)
 @section('main')
 	
 <div class="content-wrapper">
@@ -8,13 +8,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>{{ $lang == 'vn' ? (isset($item)? 'Thay đổi tài khoản' : 'Thêm mới tài khoản') : (isset($item)? '編輯賬戶' : '新增帳戶')}}</h1>
+            <h1>{{ $web_info->ad_acc }}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trang chủ' : '家'}}</a></li>
-              <li class="breadcrumb-item"><a href="{{ asset('admin/account') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tài khoản' : '帳戶'}}</a></li>
-              <li class="breadcrumb-item active">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? (isset($item)? 'Thay đổi' : 'Thêm mới') : (isset($item)? '編輯' : '加')}}</li>
+              <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $web_info->ad_home }}</a></li>
+              <li class="breadcrumb-item"><a href="{{ asset('admin/account') }}">{{ $web_info->ad_acc }}</a></li>
+              <li class="breadcrumb-item active">{{ $web_info->ad_acc_add }}</li>
             </ol>
           </div>
         </div>
@@ -28,7 +28,7 @@
           <div class="col-md-6 col-sm-9">
 			      <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">{{ $lang == 'vn' ? (isset($item)? 'Thay đổi tài khoản' : 'Thêm mới tài khoản') : (isset($item)? '編輯賬戶' : '新增帳戶')}}</h3>
+                <h3 class="card-title">{{ isset($item)? $web_info->ad_acc_edit : $web_info->ad_acc_add }}</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -36,27 +36,27 @@
               <form role="form" method="post" enctype="multipart/form-data" action="{{isset($item)?  asset('admin/account/edit/'.$item->id) : asset('admin/account/add')}}">
                 <div class="card-body">
                 	<div class="form-group">
-	                    <label for="exampleInputEmail1">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tên đăng nhập' : '用戶名'}}</label>
+	                    <label for="exampleInputEmail1">{{ $web_info->ad_acc_username }}</label>
 	                    <input type="text" class="form-control" placeholder="Username" name="username" value="{{isset($item)? $item->username : ''}}" required>
 	                </div>
 	                <div class="form-group">
-	                    <label for="exampleInputEmail1">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Họ và tên' : '全名'}}</label>
+	                    <label for="exampleInputEmail1">{{ $web_info->ad_acc_fullname }}</label>
 	                    <input type="fullname" class="form-control" placeholder="Fullname" name="fullname" value="{{isset($item)? $item->fullname : ''}}">
 	                </div>
 	                <div class="form-group">
-	                    <label for="exampleInputEmail1">Email</label>
+	                    <label for="exampleInputEmail1">{{ $web_info->ad_acc_email }}</label>
 	                    <input type="email" class="form-control" placeholder="Enter email" name="email" value="{{isset($item)? $item->email : ''}}"> 
 	                </div>
 	                <div class="form-group">
-	                    <label for="exampleInputPassword1">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Mật khẩu' : '密碼'}}</label>
+	                    <label for="exampleInputPassword1">{{ $web_info->ad_acc_password }}</label>
 	                    <input type="password" class="form-control" placeholder="Password" name="password">
 	                </div>
 	                <div class="form-group">
-	                    <label for="exampleInputPassword1">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Số điện thoại' : '電話'}}</label>
+	                    <label for="exampleInputPassword1">{{ $web_info->ad_acc_phone }}</label>
 	                    <input type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask name="phone" value="{{isset($item)? $item->phone : ''}}" >
 	                </div>
 	                <div class="form-group">
-	                    <label for="exampleInputFile">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Ảnh đại diện' : '阿凡達'}}</label>
+	                    <label for="exampleInputFile">{{ $web_info->ad_acc_image }}</label>
                       <div>
                         <input id="img" type="file" name="img" class="cssInput" onchange="changeImg(this)" style="display: none!important;">
                         <img style="cursor: pointer;" id="avatar" class="cssInput thumbnail imageForm" src="{{ isset($item->img) && file_exists(storage_path('app/avatar/'.$item->img)) && $item->img ? asset('local/storage/app/avatar/resized-'.$item->img) : '../images/images.png' }}">
@@ -68,7 +68,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <input type="submit" class="btn btn-primary" value="{{ $lang == 'vn' ? (isset($item)? 'Thay đổi' : 'Thêm mới') : (isset($item)? '編輯' : '加')}}">
+                  <input type="submit" class="btn btn-primary" value="{{ isset($item)? $web_info->ad_acc_edit : $web_info->ad_acc_add }}">
                   {{csrf_field()}}
                 </div>
 

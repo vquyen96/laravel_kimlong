@@ -1,9 +1,5 @@
 @extends('admin.master')
-
-@section('css')
-    <!-- Select2 -->
-
-@stop
+@section('title', $web_info->ad_cate)
 @section('main')
     @if (session('error'))
         <div class="alert alert-error">
@@ -16,13 +12,13 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Thêm mới Danh mục</h1>
+                <h1>{{ $web_info->ad_cate_add}}</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Trang chủ</a></li>
-                  <li class="breadcrumb-item"><a href="{{ asset('admin/group') }}">Danh mục</a></li>
-                  <li class="breadcrumb-item active">Thêm mới</li>
+                  <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $web_info->ad_home}}</a></li>
+                  <li class="breadcrumb-item"><a href="{{ asset('admin/group') }}">{{ $web_info->ad_cate}}</a></li>
+                  <li class="breadcrumb-item active">{{ $web_info->ad_cate_add}}</li>
                 </ol>
               </div>
             </div>
@@ -35,7 +31,7 @@
               <div class="col-md-12 col-sm-12">
                 <div class="card card-danger">
                     <div class="card-header">
-                        <h3 class="card-title">Thêm mới</h3>
+                        <h3 class="card-title">{{ $web_info->ad_cate_add}}</h3>
                     </div>
                     @if (session('error'))
                         <div class="alert alert-error">
@@ -52,22 +48,21 @@
                         {{csrf_field()}}
                         <div class="card-body">
                             <div class="row form-group d-none">
-                                <label class="col-sm-2">ID danh mục</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="group[id]" value="{{$group->id}}" class="form-control" placeholder="ID danh mục">
                                 </div>
                             </div>
 
                             <div class="row form-group">
-                                <label class="col-sm-2">Tên danh mục <span class="text-danger">*</span></label>
+                                <label class="col-sm-2">{{ $web_info->ad_cate_name}}<span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
                                     <input type="text" name="group[title]" value="{{$group->title}}" class="form-control" placeholder="Tên danh mục">
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <label class="col-sm-2">Danh mục cha <span class="text-danger">*</span></label>
+                                <label class="col-sm-2">{{ $web_info->ad_cate_parent}}<span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
-                                    <select class="form-control select2" data-placeholder="Chọn danh mục cha" name="group[parentid]"
+                                    <select class="form-control select2" data-placeholder="{{ $web_info->ad_cate_parenttitle}}" name="group[parentid]"
                                             style="width: 100%;">
                                         @foreach($list_group as $group_item)
                                             <option {{$group->parentid == $group_item->id ? 'selected' : ''}} value="{{ $group_item->id }}">{{ $group_item->title }}</option>
@@ -76,13 +71,13 @@
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <label class="col-sm-2">Mô tả danh mục</label>
+                                <label class="col-sm-2">{{ $web_info->ad_cate_description}}</label>
                                 <div class="col-sm-10">
-                                    <textarea type="text" name="group[summary]" class="form-control" placeholder="Mô tả danh mục">{{$group->summary}}</textarea>
+                                    <textarea type="text" name="group[summary]" class="form-control" placeholder="">{{$group->summary}}</textarea>
                                 </div>
                             </div>
 
-                            <div class="row form-group">
+                            {{-- <div class="row form-group">
                                 <label class="col-sm-2">Keywords</label>
                                 <div class="col-sm-10">
                                     <textarea type="text" name="group[keywords]" class="form-control" placeholder="Keywords danh mục">{{$group->keywords}}</textarea>
@@ -94,7 +89,7 @@
                                 <div class="col-sm-10">
                                     <textarea type="text" name="group[titlemeta]" class="form-control" placeholder="Titlemeta danh mục">{{$group->titlemeta}}</textarea>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- <div class="row form-group">
                                 <label class="col-sm-2">Avatar</label>
@@ -115,20 +110,20 @@
                                     <input class="d-none" name="group[avatar]" value="{{$group->avatar}}" id="src_avatar" type="text">
                                 </div>
                             </div> --}}
-                            <div class="row form-group">
+                           {{--  <div class="row form-group">
                                 <label class="col-sm-2">Link Icon (fontawesome.com)</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="group[fimages]" class="form-control" placeholder='VD: <i class="fab fa-youtube"></i>' value="{{$group->fimages}}">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row form-group">
-                                <label class="col-sm-2">Link danh mục</label>
+                                <label class="col-sm-2">{{ $web_info->ad_cate_link}}</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="group[link]" class="form-control" placeholder='VD: http://tapdoankimlong.com.vn/' value="{{$group->link}}">
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <label class="col-sm-2">Danh mục có nhiều bài</label>
+                                <label class="col-sm-2">{{ $web_info->ad_cate_more}}</label>
                                 <div class="col-sm-10">
                                     <input type="checkbox" name="group[single]" class="" {{ $group->single == 0 ? 'checked' : '' }}>
                                 </div>
@@ -136,25 +131,25 @@
 
 
                             <div class="row form-group">
-                                <label class="col-sm-2">Trạng thái</label>
+                                <label class="col-sm-2">{{ $web_info->ad_cate_status}}</label>
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <label class="col-sm-3 text-primary">
                                             <input value="1" type="radio" name="group[status]" {{ $group->status != 0
                                              ? 'checked' : '' }}>
-                                            Hoạt động
+                                            {{ $web_info->ad_cate_run}}
                                         </label>
                                         <label class="col-sm-3 text-primary">
                                             <input value="0" type="radio" name="group[status]" {{ $group->status == 0
                                              ? 'checked' : '' }}>
-                                            Không hoạt động
+                                            {{ $web_info->ad_cate_stop}}
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             @if (Auth::user()->site == 1)
                                 <div class="row form-group">
-                                    <label class="col-sm-2">Hot index</label>
+                                    <label class="col-sm-2">{{ $web_info->ad_cate_hot }}</label>
                                     <div class="col-sm-10">
                                         <input type="checkbox" value="1" {{$group->home_index == 1 ? 'checked' : ''}}  class="minimal" name="group[home_index]">
                                     </div>

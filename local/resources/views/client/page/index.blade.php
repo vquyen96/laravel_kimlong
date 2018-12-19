@@ -1,6 +1,6 @@
 @extends('client.master')
 
-@section('title', 'Công ty cổ phần Quốc Tế Kim Long')
+@section('title', $web_info->title_web)
 @section('fb_title', $web_info->footer_left)
 @section('fb_des', $web_info->footer_mid1)
 @section('fb_img', asset("local/storage/app/article/resized500-".$content->fimage))
@@ -289,7 +289,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-6 et-welcome-half">
-					<p class="et-welcome-sub-title text-thm">About our company</p>
+					<p class="et-welcome-sub-title text-thm">{{ $web_info->home_title1 }}</p>
 					{{--<h1 class="et-welcome-para text-uppercase">Welcome to our <br> plumbers <span class="text-thm">services</span></h1>--}}
 					<h1 class="et-welcome-para text-uppercase titleCustom">{{ $content->title }}</h1>
 					{{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At modi, amet aliquam? Obcaecati, numquam velit cumque ab! Dolorum non cumque alias nulla ea, odio nostrum voluptate magni illo dolorem sunt. Rem obcaecati et laborum eum quia, quas dolorum harum. Adipisci quas autem corporis quae commodi odit doloribus. Dolorum quam asperiores, nemo laudantium sunt, nisi velit, consequatur molestiae.</p>--}}
@@ -317,9 +317,9 @@
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 text-center et-service-sect">
 					<div class="et-services-title">
-						<p class="et-services-sub-title text-thm text-uppercase">About our company</p>
-						<h1 class="text-uppercase">our best <span class="text-kl">services</span></h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit porro, blanditiis saepe tenetur dignissimos</p>
+						<p class="et-services-sub-title text-thm text-uppercase">{{ $web_info->home_title2 }}</p>
+						<h1 class="text-uppercase titleCustom">{{ $web_info->home_title3 }}</h1>
+						<p>{{ $web_info->home_title4 }}</p>
 					</div>
 				</div>
 			</div>
@@ -339,7 +339,7 @@
 						<div class="et-service-contnt">
 							<h3><a href="{{ asset('detail/'.$service->slug.'--n-'.$service->id) }}">{{ $service->title }}</a> </h3>
 							<p>{{ cut_string($service->summary, 250)  }}</p>
-							<a class="text-thm" href="{{ asset('detail/'.$service->slug.'--n-'.$service->id) }}">read more <i class="lnr lnr-arrow-right" aria-hidden="true"></i></a>
+							<a class="text-thm" href="{{ asset('detail/'.$service->slug.'--n-'.$service->id) }}">{{ $web_info->readmore }} <i class="lnr lnr-arrow-right" aria-hidden="true"></i></a>
 							<div class="et-slash">//////////////////////////////////////////////////////</div>
 						</div>
 					</div>
@@ -354,9 +354,9 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="et-blog-title">
-						<p class="et-blog-sub-title text-thm text-uppercase">our works</p>
-						<h1 class="text-uppercase">our <span class="text-kl">news & Blog</span></h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit porro, blanditiis saepe tenetur dignissimos</p>
+						<p class="et-blog-sub-title text-thm text-uppercase">{{ $web_info->home_title5 }}</p>
+						<h1 class="text-uppercase titleCustom">{{ $web_info->home_title6 }}</h1>
+						<p>{{ $web_info->home_title7 }}</p>
 					</div>
 				</div>
 			</div>
@@ -381,7 +381,7 @@
 	                    </div>
 	                    <div class="et-blog-ftr">
 	                    	<ul class="list-inline">
-	                    		<li><a class="et-readmore pull-left text-uppercase" href="{{ asset('detail/'.$new->slug.'--n-'.$new->id) }}"> read more</a></li>
+	                    		<li><a class="et-readmore pull-left text-uppercase" href="{{ asset('detail/'.$new->slug.'--n-'.$new->id) }}"> {{ $web_info->readmore }}</a></li>
 	                    		<li><a class="et-date pull-right text-uppercase" href="{{ asset('detail/'.$new->slug.'--n-'.$new->id) }}"><i class="pe-7s-date"></i> {{ date('d M Y',$new->created_at) }}</a></li>
 	                    	</ul>
 	                    </div>

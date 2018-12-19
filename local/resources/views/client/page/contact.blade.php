@@ -1,6 +1,6 @@
 @extends('client.master')
 
-@section('title', 'Công ty cổ phần Quốc Tế Kim Long')
+@section('title', $web_info->title_web)
 @section('fb_title', $web_info->footer_left)
 @section('fb_des', $web_info->footer_mid1)
 @section('fb_img', '')
@@ -57,38 +57,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h3 class="text-uppercase">{{ $lang == 'vn' ? 'Liên hệ với chúng tôi' : '聯繫我們' }}</h3>
-                    <p>{{ $lang == 'vn' ? 'Điền đầy dủ thông tin dưới đây để chúng tôi có thể liện hệ lại với bạn trong thời gian sớm nhất !' : '填寫下面的表格，以便我們盡快回复您！' }}Đ</p>
+                    <h3 class="text-uppercase">{{ $web_info->contact_title1 }}</h3>
+                    <p>{{ $web_info->contact_title2 }}</p>
                     <form id="contact_form" name="contact_form" class="contact-form" action="{{ asset('contact') }}" method="post" novalidate="novalidate">
                         {{ csrf_field() }}
                         <div class="messages"></div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input name="name" class="form-control " placeholder="{{ $lang == 'vn' ? 'Họ và tên' : '姓名' }}" required type="text">
+                                    <input name="name" class="form-control " placeholder="{{ $web_info->contact_title3 }}" required type="text">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input  name="email" class="form-control " placeholder="{{ $lang == 'vn' ? 'Địa chỉ Email ' : '電郵地址' }}" required type="email">
+                                    <input  name="email" class="form-control " placeholder="{{ $web_info->contact_title4 }}" required type="email">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input  name="phone" class="form-control  " placeholder="{{ $lang == 'vn' ? 'Số điện thoại' : '電話號碼' }}" required type="text">
+                                    <input  name="phone" class="form-control  " placeholder="{{ $web_info->contact_title5 }}" required type="text">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input name="subject" class="form-control " placeholder="{{ $lang == 'vn' ? 'Chủ đề' : '學科' }}" required type="text">
+                                    <input name="subject" class="form-control " placeholder="{{ $web_info->contact_title6 }}" required type="text">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea  name="content" class="form-control " rows="4" placeholder="{{ $lang == 'vn' ? 'Nội dung' : '內容' }}" required></textarea>
+                            <textarea  name="content" class="form-control " rows="4" placeholder="{{ $web_info->contact_title7 }}" required></textarea>
                         </div>
                         <div class="form-group text-right">
-                            <button type="submit" class="btn btn-lg btn-block et-button-styledark" data-loading-text="Getting Few Sec...">{{ $lang == 'vn' ? 'Gửi tin nhắn' : '發送信息' }}</button>
+                            <button type="submit" class="btn btn-lg btn-block et-button-styledark" data-loading-text="Getting Few Sec...">{{ $web_info->contact_title8 }}</button>
                         </div>
                     </form>
                 </div>
@@ -102,22 +102,22 @@
                 <div class="col-xs-12 col-sm-6 col-md-4 text-center">
                     <div class="et-contact-inlocat">
                         <span class="text-thm pe-7s-world"></span>
-                        <h3 class="text-uppercase">location</h3>
-                        <p>{{ $web_info->location_head }}</p>
+                        <h3 class="text-uppercase">{{ $web_info->contact_title9 }}</h3>
+                        <p>{!! $web_info->contact_title10 !!}</p>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 text-center">
                     <div class="et-contact-inlocat">
                         <span class="text-thm pe-7s-headphones"></span>
-                        <h3 class="text-uppercase">call now</h3>
-                        <p>Any time. We are open 24/7 <br>{{ $web_info->hotline }}</p>
+                        <h3 class="text-uppercase">{{ $web_info->contact_title11 }}</h3>
+                        <p>{!! $web_info->contact_title12 !!}</p>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 text-center">
                     <div class="et-contact-inlocat">
                         <span class="text-thm pe-7s-mail"></span>
-                        <h3 class="text-uppercase">mail us</h3>
-                        <p>get support via email <br> {{ $web_info->email1 }} </p>
+                        <h3 class="text-uppercase">{{ $web_info->contact_title13 }}</h3>
+                        <p>{!! $web_info->contact_title14 !!} </p>
                     </div>
                 </div>
             </div>

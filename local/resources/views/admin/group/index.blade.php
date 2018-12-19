@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title', 'Quản trị')
+@section('title', $web_info->ad_cate)
 @section('main')
 
     <div class="content-wrapper">
@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 ">{{ $lang == "vn" ? "Danh sách Danh mục" : "類別清單"}}</h1>
+                        <h1 class="m-0 ">{{ $web_info->ad_cate_list}}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $lang == "vn" ? "Trang chủ" : "家"}}</a></li>
-                            <li class="breadcrumb-item active">{{ $lang == "vn" ? "Danh sách Danh mục" : "類別清單"}}</li>
+                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $web_info->ad_home}}</a></li>
+                            <li class="breadcrumb-item active">{{ $web_info->ad_cate_list}}</li>
                         </ol>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                             <div class="row form-group">
                                 <div class="col-md-2">
                                     @if (Auth::user()->site == 1)
-                                        <a href="{{route('form_group',0)}}" class="btn btn-primary"><h3 class="card-title">{{ $lang == "vn" ? "Thêm mới danh mục" : "添加新類別"}}</h3></a>
+                                        <a href="{{route('form_group',0)}}" class="btn btn-primary"><h3 class="card-title">{{ $web_info->ad_cate_add }}</h3></a>
                                     @endif
                                 </div>
                                 
@@ -50,24 +50,24 @@
                                     <form action="{{route('admin_group')}}" method="get">
                                         <div class="row form-group">
                                             <div class="col-md-4">
-                                                <input value="{{isset($paramater['key_search']) ? $paramater['key_search'] : ''}}" class="form-control" name="key_search" placeholder="{{ $lang == "vn" ? "Từ khóa tìm kiếm" : "搜索關鍵字"}}">
+                                                <input value="{{isset($paramater['key_search']) ? $paramater['key_search'] : ''}}" class="form-control" name="key_search" placeholder="{{ $web_info->ad_cate_search1 }}">
                                             </div>
                                             <div class="col-md-4">
-                                                <select class="select2" data-placeholder="{{ $lang == "vn" ? "Chọn danh mục" : "選擇類別"}}"
+                                                <select class="select2"
                                                         name="groupid"
                                                         style="width: 100%;">
-                                                    <option value="null">{{ $lang == "vn" ? "Chọn danh mục" : "選擇類別"}}</option>
-                                                    @foreach($groups as $articel_item)
-                                                        <option {{$parentid == $articel_item->id ? 'selected' : ''}}
+                                                    <option value="null" selected disabled>{{ $web_info->ad_cate_search2 }}</option>
+                                                    @foreach($groups as $group)
+                                                        <option {{$parentid == $group->id ? 'selected' : ''}}
                                                                 value="{{
-                                                        $articel_item->id }}">{{
-                                                        $articel_item->title }}</option>
+                                                        $group->id }}">{{
+                                                        $group->title }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
 
                                             <div class="col-md-3">
-                                                <button style="height: 90%" type="submit" class="btn btn-primary">{{ $lang == "vn" ? "Tìm kiếm" : "搜索"}}</button>
+                                                <button style="height: 90%" type="submit" class="btn btn-primary">{{ $web_info->ad_cate_search3 }}</button>
                                             </div>
                                         </div>
                                     </form>

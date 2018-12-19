@@ -1,6 +1,6 @@
 @extends('client.master')
 
-@section('title', 'Công ty cổ phần Quốc Tế Kim Long')
+@section('title', $web_info->title_web)
 @section('fb_title', $web_info->footer_right)
 @section('fb_des', $web_info->footer_mid1)
 @section('fb_img', asset('local/storage/app/images/resized500-'.$images[0]->img))
@@ -40,8 +40,8 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center et-service-sect">
                     <div class="et-services-title">
-                        <p class="et-services-sub-title text-thm text-uppercase">our works</p>
-                        <h1 class="text-uppercase titleCustom">Thư viện ảnh</h1>
+                        <p class="et-services-sub-title text-thm text-uppercase">{{ $web_info->media_title1 }}</p>
+                        <h1 class="text-uppercase titleCustom">{{ $web_info->media_title1 }}</h1>
                         <div class="et-service-icon">
                             <span class="et-title-faq"></span><img src="images/icons/faq-page.png" alt=""><span class="et-title-faq2"></span>
                         </div>

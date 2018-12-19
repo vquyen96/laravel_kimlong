@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Hồ sơ')
+@section('title', $web_info->ad_banner)
 @section('main')
 
     <div class="content-wrapper">
@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>{{ $lang == "vn" ? "Ảnh bìa" : "封面圖片" }}</h1>
+                        <h1>{{ $web_info->ad_banner }}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $lang == "vn" ? "Trang chủ" : "家" }}</a></li>
-                            <li class="breadcrumb-item active">{{ $lang == "vn" ? "Ảnh bìa" : "封面圖片" }}</li>
+                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $web_info->ad_home }}</a></li>
+                            <li class="breadcrumb-item active">{{ $web_info->ad_banner }}</li>
                         </ol>
                     </div>
                 </div>
@@ -43,16 +43,16 @@
                         <div class="card card-danger card-outline">
                             <div class="card-body box-profile">
                                 <div class="form-group">
-                                    <label class="bold">{{ $lang == "vn" ? "Tiêu đề" : "標題"}} 1</label>
-                                    <input required="" type="text" class="form-control"  placeholder="Tiêu đề dòng 1" name="text1" value="{{$banner->text1}}">
+                                    <label class="bold">{{ $web_info->ad_banner_title1 }}</label>
+                                    <input required="" type="text" class="form-control"  placeholder="" name="text1" value="{{$banner->text1}}">
                                 </div>
                                 <div class="form-group">
-                                    <label class="bold">{{ $lang == "vn" ? "Tiêu đề" : "標題"}} 2</label>
-                                    <input type="text" class="form-control"  placeholder="Tiêu đề dòng 2" name="text2" value="{{$banner->text2}}">
+                                    <label class="bold">{{ $web_info->ad_banner_title2 }}</label>
+                                    <input type="text" class="form-control"  placeholder="" name="text2" value="{{$banner->text2}}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="bold">{{ $lang == "vn" ? "Vị trí banner" : "位置"}}</label>
+                                    <label class="bold">{{ $web_info->ad_banner_location }}</label>
                                     <select class="form-control" name="group_id">
                                         @foreach($groups as $group)
                                             <option value="{{ $group->id }}" {{ $banner->group_id == $group->id ? "selected" : "" }}>{{ $group->title }}</option>
@@ -60,8 +60,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">{{ $lang == "vn" ? "Lưu" : "保存"}}</button>
-                                    <a href="{{ asset('admin/banner/delete/'.$banner->banner_id) }}" class="btn btn-danger white">{{ $lang == "vn" ? "Xóa" : "刪除"}}</a>
+                                    <button type="submit" class="btn btn-primary">{{ $web_info->ad_banner_save }}</button>
+                                    <a href="{{ asset('admin/banner/delete/'.$banner->banner_id) }}" class="btn btn-danger white">{{ $web_info->ad_banner_del }}</a>
                                 </div>
 
                             </div>
@@ -78,7 +78,7 @@
                         <div class="col-md-12">
                             <div class="text-center">
                                 <div class="btn btn-success btnAddBanner">
-                                    {{ $lang == "vn" ? "Thêm mới" : "添新" }}
+                                    {{ $web_info->ad_banner_add }}
                                 </div>
                             </div>
                         </div>
@@ -103,25 +103,25 @@
                             <div class="card card-danger card-outline">
                                 <div class="card-body box-profile">
                                     <div class="form-group">
-                                        <label class="bold">{{ $lang == "vn" ? "Tiêu đề" : "標題"}} 1</label>
-                                        <input required="" type="text" class="form-control"  placeholder="{{ $lang == "vn" ? "Tiêu đề" : "標題"}} 1" name="text1" value="">
+                                        <label class="bold">{{ $web_info->ad_banner_title1 }}</label>
+                                        <input required="" type="text" class="form-control"  placeholder="" name="text1" value="">
                                     </div>
                                     <div class="form-group">
-                                        <label class="bold">{{ $lang == "vn" ? "Tiêu đề" : "標題"}} 2</label>
-                                        <input type="text" class="form-control"  placeholder="{{ $lang == "vn" ? "Tiêu đề" : "標題"}} 2" name="text2" value="">
+                                        <label class="bold">{{ $web_info->ad_banner_title2 }}</label>
+                                        <input type="text" class="form-control"  placeholder="" name="text2" value="">
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="bold">{{ $lang == "vn" ? "Vị trí banner" : "位置"}}</label>
+                                        <label class="bold">{{ $web_info->ad_banner_location }}</label>
                                         <select class="form-control" name="group_id">
-                                                <option value="" selected disabled>{{ $lang == "vn" ? "Chọn danh mục" : "選擇類別"}}</option>
+                                                <option value="" selected disabled>{{ $web_info->ad_banner_option }}</option>
                                             @foreach($groups as $group)
                                                 <option value="{{ $group->id }}">{{ $group->title }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">{{ $lang == "vn" ? "Lưu" : "保存"}}</button>
+                                        <button type="submit" class="btn btn-primary">{{ $web_info->ad_banner_save }}</button>
                                         {{--<a href="{{ asset('admin/banner/delete/'.$banner->banner_id) }}" class="btn btn-danger white">Xóa</a>--}}
                                     </div>
 

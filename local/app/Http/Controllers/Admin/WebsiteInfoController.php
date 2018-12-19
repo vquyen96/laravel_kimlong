@@ -27,7 +27,6 @@ class WebsiteInfoController extends Controller
             'info_raw' => $info_raw
         ];
 
-
         return view('admin.website_info.index',$data);
     }
 

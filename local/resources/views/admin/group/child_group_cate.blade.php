@@ -27,7 +27,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer clearfix">
-            <button type="submit" class="btn btn-info float-right"><i class="fa fa-plus"></i> Cập nhật
+            <button type="submit" class="btn btn-info float-right"><i class="fa fa-plus"></i> {{ $web_info->ad_cate_update }}
             </button>
         </div>
     </form>

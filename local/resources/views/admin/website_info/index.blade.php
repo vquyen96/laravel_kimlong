@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12" style="padding-left: 30px">
-                    <div class="card card-info d-none">
+                    <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title">Thông tin gốc</h3>
                         </div>

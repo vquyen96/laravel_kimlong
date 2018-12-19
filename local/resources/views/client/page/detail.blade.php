@@ -42,7 +42,7 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center et-service-sect">
 					<div class="et-services-title">
-						<p class="et-services-sub-title text-thm text-uppercase">our works</p>
+						<p class="et-services-sub-title text-thm text-uppercase">{{ $web_info->detail_title1 }}</p>
 						<h1 class="text-uppercase titleCustom">{{ $news->title }}</h1>
 						<div class="et-service-icon">
 						<span class="et-title-faq"></span><img src="images/icons/faq-page.png" alt=""><span class="et-title-faq2"></span>
@@ -54,7 +54,7 @@
 				<div class="col-md-4">
 					<div class="et-blog-inner-search">
 						<div class="input-group">
-							<input placeholder="Search" class="form-control et-bisrch search-input" name="search-field" type="text">
+							<input placeholder="{{ $web_info->detail_title2 }}" class="form-control et-bisrch search-input" name="search-field" type="text">
 							<span class="input-group-btn">
 								<button type="button" class="btn text-thm et-search"><i class="fa fa-search"></i></button>
 							</span>
@@ -64,7 +64,7 @@
 						</div>
 					</div>
 					<div class="et-categories et-inner-box">
-						<h3 class="et-popular-categori-ttl text-uppercase"><i class="pe-7s-paper-plane"></i> CATEGORIES</h3>
+						<h3 class="et-popular-categori-ttl text-uppercase titleCustom"><i class="pe-7s-paper-plane"></i> {{ $web_info->detail_title3 }}</h3>
 						<ul class="list-unstyled">
 							@foreach( $gr_childs as $gr)
 							<li><p><a href="{{ $gr->link == null ? asset('group/'.$gr->slug.'--n-'.$gr->id) : $gr->link }}" {{ $gr->link == null ? '' : 'target="_blank"' }} >{{ $gr->title }}</a></p></li>
@@ -76,7 +76,7 @@
 						</ul>
 					</div>
 					<div class="et-blog-smlastest-post et-inner-box">
-						<h3 class="et-blog-smttl text-uppercase titleCustom"><i class="pe-7s-tools"></i> latest post</h3>
+						<h3 class="et-blog-smttl text-uppercase titleCustom"><i class="pe-7s-tools"></i> {{ $web_info->detail_title4 }}</h3>
 						@foreach($latestpost as $news)
 						<div class="media">
 							<div class="media-left pull-left">
@@ -87,7 +87,7 @@
 							<div class="media-body">
 								<h5 class="media-heading"><a href="{{ asset('detail/'.$news->slug.'--n-'.$news->id) }}">{{ $news->title }}</a> </h5>
 								<h6 class="et-bsmp-ttl">{{ date('d M Y',$news->created_at) }}</h6>
-								<a class="et-bsmpa" href="{{ asset('detail/'.$news->slug.'--n-'.$news->id) }}">Read More</a>
+								<a class="et-bsmpa" href="{{ asset('detail/'.$news->slug.'--n-'.$news->id) }}">{{ $web_info->readmore }}</a>
 							</div>
 						</div>
 						@endforeach

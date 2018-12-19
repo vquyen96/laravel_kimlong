@@ -31,7 +31,7 @@
                     <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == '') active @endif">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Home' : '家'}}
+                            {{ $web_info->ad_dashbroad}}
                         </p>
                     </a>
                 </li>
@@ -40,7 +40,7 @@
                        class="nav-link @if (Request::segment(2) == 'account') active @endif">
                         <i class="fas fa-users-cog nav-icon"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản lí tài khoản' : '帳戶管理'}}
+                             {{ $web_info->ad_acc}}
                             <i class="right fa fa-angle-left"></i>
                         </p>
                     </a>
@@ -48,13 +48,13 @@
                         <li class="nav-item">
                             <a href="{{ asset('admin/account') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách tài khoản' : '帳戶清單'}}</p>
+                                <p>{{ $web_info->ad_acc_list}}</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ asset('admin/account/add') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thêm mới' : '添新'}}</p>
+                                <p>{{ $web_info->ad_acc_add}}</p>
                             </a>
                         </li>
 
@@ -64,7 +64,7 @@
                     <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'profile') active @endif">
                     <i class="fas fa-user-shield nav-icon"></i>
                     <p>
-                        {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Cá Nhân' : '輪廓'}}
+                        {{ $web_info->ad_profile}}
                         <i class="right fa fa-angle-left"></i>
                     </p>
                     </a>
@@ -72,13 +72,13 @@
                         <li class="nav-item">
                             <a href="{{ asset('admin/profile') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thông tin cá nhân' : '更改信息'}}</p>
+                                <p>{{ $web_info->ad_profile_detail}}</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ asset('admin/profile/change_pass') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đổi mật khẩu' : '更改密碼'}}</p>
+                                <p>{{ $web_info->ad_profile_changepass}}</p>
                             </a>
                         </li>
 
@@ -88,7 +88,7 @@
                     <a href="{{ asset('admin/banner') }}" class="nav-link @if (Request::segment(2) == 'banner') active @endif">
                         <i class="nav-icon fas fa-image"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Ảnh bìa' : '旗幟'}}
+                            {{ $web_info->ad_banner }}
                         </p>
                     </a>
                 </li>
@@ -96,7 +96,7 @@
                     <a href="{{ asset('admin/image') }}" class="nav-link @if (Request::segment(2) == 'image') active @endif">
                         <i class="nav-icon fas fa-camera"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thư viện ảnh' : '照片庫'}}
+                            {{ $web_info->ad_image }}
                         </p>
                     </a>
                 </li>
@@ -104,7 +104,7 @@
                     <a href="{{ asset('admin') }}" class="nav-link  @if (Request::segment(2) == 'group') active @endif" >
                         <i class="nav-icon fas fa-ellipsis-h"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh mục' : '類別'}}
+                            {{ $web_info->ad_cate }}
                             <i class="fa fa-angle-left right"></i>
                         </p>
                     </a>
@@ -113,7 +113,7 @@
                             <li class="nav-item">
                                 <a href="{{route('form_sort_group','00')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Sắp xếp trang chủ' : '排序類別'}}</p>
+                                    <p>{{ $web_info->ad_cate_sort }}</p>
                                 </a>
                             </li>
                         @endif
@@ -130,7 +130,7 @@
                         <li class="nav-item">
                             <a href="{{route('admin_group')}}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách mục' : '分類列表'}}</p>
+                                <p>{{ $web_info->ad_cate_list }}</p>
                             </a>
                         </li>
                     </ul>

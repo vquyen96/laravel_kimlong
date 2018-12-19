@@ -518,7 +518,7 @@
             let arr = title.split(" ");
             let title_new = "";
             for (let i = 0; i < arr.length ; i++){
-                if (i == arr.length-1){
+                if (i == arr.length-1 && i != 1){
                     title_new += ' <span class="text-kl">'+arr[i]+'</span>';
                 }
                 else{
