@@ -83,7 +83,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    @if($dis_group)
                                     <div class="row form-group">
                                         <label class="col-sm-2">{{ $web_info->ad_news_cate }}<span class="text-danger">*</span></label>
                                         <div class="col-sm-10">
@@ -105,6 +105,7 @@
                                             {{--</select>--}}
                                         {{--</div>--}}
                                     </div>
+                                    @endif
                                     <div class="row form-group">
                                         <label class="col-sm-2">{{ $web_info->ad_news_summary }}</label>
                                         <div class="col-sm-10">

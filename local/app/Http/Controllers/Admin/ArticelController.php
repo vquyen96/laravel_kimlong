@@ -274,7 +274,9 @@ class ArticelController extends Controller
 
         $article_relate = [];
         $list_article_relate = DB::table($this->db->news)->where('status', 1)->where('release_time', '<=', time())->orderByDesc('id')->take(5)->get();
+        
         $result = [];
+        $this->recusiveGroup($list_group, 0, "", $result);
         if($id == 0){
             // $list_group = DB::table($this->db->group)->where('status', 1)->orderBy('order', 'asc')->get()->toArray();
             // $root = [
@@ -282,7 +284,7 @@ class ArticelController extends Controller
             //     'title' => 'root'
             // ];
             // $result[] = (object)$root;
-            $this->recusiveGroup($list_group, 0, "", $result);
+            // $this->recusiveGroup($list_group, 0, "", $result);
 
             $data = [
                 'id' => 0,
@@ -312,6 +314,7 @@ class ArticelController extends Controller
                 'status' => 5
             ];
             $article = (object)$data;
+            $dis_group = true;
         }else{
             $article_model = News::find($id);
             if ($article_model == null) {
@@ -322,13 +325,13 @@ class ArticelController extends Controller
             $article_group_ids = explode(',',$article_user->group_id);
             // dd($article_group_ids );
 
-            $list_group = DB::table($this->db->group)->where('status', 1)->orderBy('order', 'asc')->get()->toArray();
-            $root = [
-                'id' => 0,
-                'title' => 'root'
-            ];
-            $result[] = (object)$root;
-            $this->recusiveGroup($list_group, 0, "", $result);
+            // $list_group = DB::table($this->db->group)->where('status', 1)->orderBy('order', 'asc')->get()->toArray();
+            // $root = [
+            //     'id' => 0,
+            //     'title' => 'root'
+            // ];
+            // $result[] = (object)$root;
+            // $this->recusiveGroup($list_group, 0, "", $result);
 
             // dd($article);
             if ($article_model->time_hot_item - time() <= 0) {
@@ -378,11 +381,20 @@ class ArticelController extends Controller
                 'day' => date('Y-m-d',$date),
                 'h' => date('h:i A',$date)
             ];
+
+            $article_gr = DB::table($this->db->group)->where('id', $article->groupid)->first();
+            if (in_array($article_gr->id, $group_ids) || in_array($article_gr->parentid, $group_ids)) {
+                $dis_group = true;
+            }
+            else{
+                $dis_group = false;
+            }
             
 
         }
         
         $data = [
+            'dis_group' => $dis_group,
             'articel' => $article,
             'list_group' => $result,
             'list_group_child' => $list_group_child,

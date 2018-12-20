@@ -84,7 +84,7 @@
                                     <th>Tên danh mục</th>
                                     <th class="hideResponsive768">Mô tả danh mục</th>
                                     <th class="hideResponsive768">Đường dẫn</th>
-                                    <th>Ngày tạo</th>
+                                    {{-- <th>Ngày tạo</th> --}}
                                     <th>Trạng thái</th>
                                     <th>Thao tác</th>
                                 </tr>
@@ -97,7 +97,7 @@
                                         <td>{{$group->title}}</td>
                                         <td class="hideResponsive768">{{$group->summary}}</td>
                                         <td class="hideResponsive768">{{$group->slug}}</td>
-                                        <td>{{$group->created_at}}</td>
+                                        {{-- <td>{{$group->created_at}}</td> --}}
                                         
                                         <td>
                                             <button class="btn btn-block btn-sm {{ $group->status == 0 ? 'btn-danger btnOn' : 'btn-success btnOff' }}">{{ $group->status ? ' Hoạt động' : 'Không hoạt động' }}</button>
