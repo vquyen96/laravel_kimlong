@@ -59,7 +59,7 @@
 	                    <label for="exampleInputFile">{{ $web_info->ad_acc_image }}</label>
                       <div>
                         <input id="img" type="file" name="img" class="cssInput" onchange="changeImg(this)" style="display: none!important;">
-                        <img style="cursor: pointer;" id="avatar" class="cssInput thumbnail imageForm" src="{{ isset($item->img) && file_exists(storage_path('app/avatar/'.$item->img)) && $item->img ? asset('local/storage/app/avatar/resized-'.$item->img) : '../images/images.png' }}">
+                        <img style="cursor: pointer;" id="avatar" class="cssInput thumbnail imageForm" src="{{ isset($item->img) && file_exists(storage_path('app/avatar/'.$item->img)) && $item->img ? asset('local/storage/app/avatar/resized-'.$item->img) : 'images/default-image.png' }}">
                       </div>
       		            
 	                </div>

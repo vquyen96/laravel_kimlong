@@ -264,6 +264,6 @@ class RecruitmentController extends Controller
         }
         // dd($data);
         // dd($data);
-        return view('admin.articel.index', $data);
+        return view('admin.recruit.index', $data);
     }
 }

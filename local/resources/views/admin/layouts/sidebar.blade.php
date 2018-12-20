@@ -139,7 +139,7 @@
                     <a href="{{ asset('admin') }}" class="nav-link  @if (Request::segment(2) == 'articel') active @endif">
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản trị tin' : '文章管理'}}
+                            {{ $web_info->ad_news}}
                             <i class="fa fa-angle-left right"></i>
                         </p>
                     </a>
@@ -147,14 +147,14 @@
                         <li class="nav-item">
                             <a href="{{route('admin_articel')}}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : '文章列表'}}</p>
+                                <p>{{ $web_info->ad_news_list}}</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="{{route('form_articel',0)}}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Viết bài' : '添新'}}</p>
+                                <p>{{ $web_info->ad_news_add}}</p>
                             </a>
                         </li>
                         {{--<li class="nav-item">--}}
@@ -169,7 +169,7 @@
                     <a href="{{ asset('admin/recruitment') }}" class="nav-link @if (Request::segment(2) == 'recruitment') active @endif">
                         <i class="nav-icon fas fa-chalkboard-teacher"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tuyển dụng' : '招聘'}}
+                            {{ $web_info->ad_recruit}}
                         </p>
                     </a>
                 </li>
@@ -177,7 +177,7 @@
                     <a href="{{ asset('admin/contact') }}" class="nav-link @if (Request::segment(2) == 'contact') active @endif">
                         <i class="nav-icon fab fa-discourse"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ' : '聯繫'}}
+                            {{ $web_info->ad_contact}}
                         </p>
                     </a>
                 </li>
@@ -185,7 +185,7 @@
                     <a href="{{ asset('admin/website_info') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
                         <i class="nav-icon fas fa-info-circle"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thông tin website' : '網站信息'}}
+                            {{ $web_info->ad_info}}
                         </p>
                     </a>
                 </li>
@@ -193,7 +193,7 @@
                     <a href="{{ asset('logout') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đăng xuất' : '登出 '}}
+                            {{ $web_info->ad_logout}}
                         </p>
                     </a>
                 </li>

@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title', 'Quản trị')
+@section('title', $web_info->ad_contact)
 @section('main')
 
     <div class="content-wrapper">
@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 ">Danh sách liên hệ</h1>
+                        <h1 class="m-0 ">{{ $web_info->ad_contact }}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Danh sách liên hệ</li>
+                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $web_info->ad_home }}</a></li>
+                            <li class="breadcrumb-item active">{{ $web_info->ad_contact }}</li>
                         </ol>
                     </div>
                 </div>
@@ -44,11 +44,11 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>Tên</th>
-                                    <th class="hideResponsive768">Email</th>
-                                    <th class="hideResponsive768">Số điện thoại</th>
-                                    <th>Chủ đề</th>
-                                    <th>Thao tác</th>
+                                    <th>{{ $web_info->ad_contact_name }}</th>
+                                    <th class="hideResponsive768">{{ $web_info->ad_contact_email }}</th>
+                                    <th class="hideResponsive768">{{ $web_info->ad_contact_phone }}</th>
+                                    <th>{{ $web_info->ad_contact_subject }}</th>
+                                    <th>{{ $web_info->ad_contact_option }}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -61,9 +61,9 @@
                                         <td class="tdSubject">{{$contact->subject}}</td>
                                         <td>
                                             <div class="row form-group">
-                                                <span data-toggle="tooltip" title="Xem" class="col-sm-6 text-primary btnShowContact" style="cursor: pointer"><i class="far fa-eye"></i></span>
+                                                <span data-toggle="tooltip" title="{{ $web_info->ad_contact_show }}" class="col-sm-6 text-primary btnShowContact" style="cursor: pointer"><i class="far fa-eye"></i></span>
                                                 <span class="d-none">{{ $contact->content  }}</span>
-                                                <a data-toggle="tooltip" title="Xóa" href="{{ asset('admin/contact/delete/'.$contact->id) }}" class="col-sm-6 text-danger" onclick="return confirm('Bạn chắc chắn muốn xóa')"><i class="fa fa-trash"></i></a>
+                                                <a data-toggle="tooltip" title="{{ $web_info->ad_contact_del }}" href="{{ asset('admin/contact/delete/'.$contact->id) }}" class="col-sm-6 text-danger" onclick="return confirm('Bạn chắc chắn muốn xóa')"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>

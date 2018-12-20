@@ -165,7 +165,9 @@ class Controller extends BaseController
 
     function web_info(){
         $info = DB::table($this->db->web_info)->first();
+
         $info = (object)json_decode($info->info,true);
+        // dd($info);
         return $info;
     }
 

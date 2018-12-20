@@ -1,5 +1,5 @@
 @extends('admin.master')
-
+@section('title', $web_info->ad_info)
 @section('css')
 @stop
 @section('main')
@@ -35,13 +35,13 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Thông tin Website</h1>
+                <h1>{{ $web_info->ad_info }}</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Trang chủ</a></li>
+                  <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{ $web_info->ad_home }}</a></li>
                   
-                  <li class="breadcrumb-item active">Chỉnh sửa thông tin</li>
+                  <li class="breadcrumb-item active">{{ $web_info->ad_info }}</li>
                 </ol>
               </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="col-md-8 col-sm-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Thông tin</h3>
+                            <h3 class="card-title">{{ $web_info->ad_info }}</h3>
                         </div>
                         <form id="create_group" action="{{route('update_info')}}" method="post">
                             {{csrf_field()}}
@@ -71,13 +71,13 @@
                             </div>
                                 
                             <div class="box-footer card-footer">
-                                <button type="submit" class="btn btn-info pull-right">Cập nhật
+                                <button type="submit" class="btn btn-info pull-right">{{ $web_info->ad_info_save }}
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12" style="padding-left: 30px">
+                <div class="col-md-4 col-sm-12 d-none" style="padding-left: 30px">
                     <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title">Thông tin gốc</h3>
@@ -93,17 +93,17 @@
                             </div>
 
                             <div class="box-footer card-footer">
-                                <button type="submit" class="btn btn-info pull-right">Cập nhật
+                                <button type="submit" class="btn btn-info pull-right">{{ $web_info->ad_info_save }}
                                 </button>
                             </div>
                         </form>
                     </div>
 
                     <div class="row">
-                        <label>Người cập nhật : {{$website_info->user_updated ? $website_info->user_updated->fullname : 'admin'}}</label>
+                        <label>{{ $web_info->ad_info_user }} : {{$website_info->user_updated ? $website_info->user_updated->fullname : 'admin'}}</label>
                     </div>
                     <div class="row">
-                        <label>Ngày cập nhật : {{$website_info->updated_at}}</label>
+                        <label>{{ $web_info->ad_info_update }} : {{$website_info->updated_at}}</label>
                     </div>
                 </div>
             </div>
